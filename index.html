@@ -3,589 +3,64 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Ark</title>
+<title>The Ark · Ковчег</title>
+<meta name="description" content="Private, fully autonomous turnkey sanctuaries for families who think in generations.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The Ark">
+<meta property="og:description" content="Private, fully autonomous turnkey sanctuaries for families who think in generations. By invitation only.">
+<meta property="og:image" content="https://vkruppp.github.io/the-ark/img/aerial.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1417'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' fill='%23C29A62' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Rubik:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
 <style>
-:root{--bg:#10161A;--bg2:#141B1F;--card:#1A2328;--line:#2C383E;--tx:#EFE9DE;--mu:#A9B3AE;--br:#C29A62;--em:#E58A5E;--sel:#22302f;--lt:#F2EDE3;--lt2:#E7E0D3;--tl:#1B2226;--ml:#4E5A5E;--brl:#7A5A2E}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:Rubik,Arial,sans-serif;font-weight:300;line-height:1.5;-webkit-font-smoothing:antialiased}
-body.lru .en,body.len .ru{display:none!important}
-img{display:block;max-width:100%}
-.serif{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500}
-.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
-section{padding:110px 0}
-.eb{font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--br);font-weight:500;margin-bottom:10px}
-h2{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(36px,5vw,60px);line-height:1.05;margin-bottom:18px}
-.lead{font-size:19px;color:var(--mu);max-width:720px}
-.light{background:var(--lt);color:var(--tl)}
-.light .lead,.light .mu{color:var(--ml)}
-.light .eb{color:var(--brl)}
-.mu{color:var(--mu)}
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .3s;}
-nav.solid{background:rgba(16,22,26,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-nav .in{display:flex;align-items:center;gap:24px;height:68px}
-nav .logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:26px;letter-spacing:4px;color:var(--tx);text-decoration:none}
-nav .links{display:flex;gap:22px;margin-left:auto}
-nav .links a{color:var(--mu);text-decoration:none;font-size:15px}
-nav .links a:hover{color:var(--tx)}
-.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
-.lang button{background:none;border:0;color:var(--mu);padding:6px 12px;font:inherit;font-size:13px;cursor:pointer}
-.lang button.on{background:var(--br);color:var(--bg);font-weight:500}
-@media(max-width:900px){nav .links{display:none}nav .lang{margin-left:auto}}
-.btn{display:inline-block;background:var(--br);color:var(--bg);border:0;border-radius:8px;padding:14px 24px;font:inherit;font-weight:500;cursor:pointer;text-decoration:none}
-.btn.ghost{background:transparent;color:var(--tx);border:1px solid rgba(239,233,222,.4)}
-/* hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 0 90px}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(16,22,26,.92) 0%,rgba(16,22,26,.55) 45%,rgba(16,22,26,.1) 80%),linear-gradient(0deg,rgba(16,22,26,.9) 0%,rgba(16,22,26,0) 40%)}
-.hero .wrap{position:relative;z-index:1;width:100%}
-.hero h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(72px,12vw,150px);line-height:.9}
-.hero p.s{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(22px,2.6vw,32px);max-width:640px;margin:18px 0 32px}
-.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
-/* clock */
-.clock{position:relative;overflow:hidden}
-.clock>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
-.clock .wrap{position:relative}
-.big{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(96px,16vw,200px);line-height:.9;color:var(--em)}
-/* grids */
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.g3,.g2,.g4{grid-template-columns:1fr}}
-.card{background:var(--card);border-radius:14px;padding:26px}
-.light .card{background:var(--lt2)}
-.card h3{font-size:19px;font-weight:500;margin-bottom:8px}
-.card p{color:var(--mu);font-size:15px}
-.light .card p{color:var(--ml)}
-.risk{border-top:3px solid var(--em)}
-.quote{border-left:3px solid var(--br)}
-.quote q{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:26px;line-height:1.25;quotes:none;margin-bottom:12px}
-.src{font-size:13px;color:var(--mu);margin-top:10px}
-.light .src{color:var(--ml)}
-.card .num,.num{font-family:'Cormorant Garamond',Georgia,serif;font-size:64px;line-height:1;color:var(--br);margin-bottom:10px}
-.mt{margin-top:40px}
-/* timeline */
-.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:40px;border-top:1px solid var(--line);padding-top:24px}
-@media(max-width:900px){.tl{grid-template-columns:1fr 1fr}}
-.tl .y{font-family:'Cormorant Garamond',Georgia,serif;font-size:40px;line-height:1}
-.tl p{color:var(--mu);font-size:15px;margin-top:6px}
-.tl .y:before{content:"";display:block;width:12px;height:12px;border-radius:50%;background:var(--em);margin-bottom:10px}
-/* statement */
-.stmt{position:relative;min-height:80vh;display:flex;align-items:flex-end;padding-bottom:100px}
-.stmt>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.stmt:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,22,26,.1),rgba(16,22,26,.9))}
-.stmt .wrap{position:relative;z-index:1}
-.stmt p.eb{font-family:Rubik,Arial,sans-serif;font-size:13px}
-.stmt p:not(.eb){font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(40px,6vw,80px);line-height:1.05}
-/* gallery */
-.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:40px}
-@media(max-width:700px){.gal{grid-template-columns:1fr}}
-.gal figure{position:relative;border-radius:14px;overflow:hidden}
-.gal img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .6s}
-.gal figure:hover img{transform:scale(1.03)}
-.gal figcaption{padding:16px 2px 0}
-.gal figcaption b{display:block;font-weight:500;font-size:18px;margin-bottom:4px}
-.gal figcaption span{color:var(--mu);font-size:15px}
-.light .gal figcaption span{color:var(--ml)}
-.wide{margin-top:40px;border-radius:14px;overflow:hidden}
-.wide img{width:100%}
-.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;color:var(--mu);margin:0 8px 8px 0}
-.light .pill{border-color:#C9BFAE;color:var(--ml)}
-/* options */
-details{background:var(--card);border-radius:14px;margin-bottom:12px}
-summary{cursor:pointer;padding:20px 24px;font-size:19px;font-weight:500;list-style:none;display:flex;justify-content:space-between}
-summary:after{content:"+";color:var(--br);font-size:24px;line-height:1}
-details[open] summary:after{content:"–"}
-details ul{padding:0 24px 22px 44px;color:var(--mu);columns:2;column-gap:40px}
-@media(max-width:600px){details ul{columns:1}}
-details li{padding:4px 0;break-inside:avoid}
-/* map */
-.map{position:relative;margin-top:40px}
-.map img{width:100%}
-.pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;background:var(--br);color:var(--bg);font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 6px rgba(194,154,98,.25);cursor:pointer;border:0;font-family:inherit}
-.pin.on{background:var(--tx)}
-.locs{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:30px}
-@media(max-width:900px){.locs{grid-template-columns:1fr 1fr}}
-.loc{background:var(--card);color:var(--tx);border-radius:12px;padding:16px;cursor:pointer;border:1px solid transparent}
-.loc.on{border-color:var(--br)}
-.loc b{font-weight:500}
-.loc .sc{color:var(--br);font-size:14px}
-.prof{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
-@media(max-width:700px){.prof{grid-template-columns:1fr}}
-.prof h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:40px;font-weight:500}
-.card .v,.prof .v{color:var(--tx);font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:24px;margin:6px 0 10px}
-.prof ul{padding-left:20px}
-.prof li{padding:3px 0}
-.plus,.prof .card p.plus{color:var(--br);font-weight:500;margin-top:8px}
-.prof .card p.v{color:var(--tx)}
-.minus,.prof .card p.minus{color:var(--em);font-weight:500;margin-top:8px}
-table{width:100%;border-collapse:collapse;margin-top:30px;font-size:15px}
-th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
-th{color:var(--br);font-weight:500}
-.tw{overflow-x:auto}
-/* calc & brief shared */
-.f{display:block;font-size:14px;color:var(--mu);margin-bottom:6px}
-select,input[type=number],input[type=text],textarea{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:8px;padding:10px 12px;font:inherit;font-size:15px}
-textarea{min-height:90px;resize:vertical}
-.rng{display:flex;align-items:center;gap:12px}
-input[type=range]{flex:1;accent-color:var(--br)}
-.rng output{min-width:64px;text-align:right;font-weight:500}
-.seg{display:flex;gap:6px;flex-wrap:wrap}
-.seg button,.ch button{flex:1;min-width:110px;background:var(--bg);border:1px solid var(--line);color:var(--mu);border-radius:8px;padding:10px;font:inherit;font-size:14px;cursor:pointer;text-align:left;line-height:1.3}
-.seg button.on,.ch button.on{border-color:var(--br);color:var(--tx);background:var(--sel)}
-.ch{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
-.ch button{color:var(--tx)}
-.ch button.on::before{content:"✓ ";color:var(--br)}
-.calc{display:grid;grid-template-columns:1fr 380px;gap:24px;align-items:start;margin-top:40px}
-@media(max-width:960px){.calc{grid-template-columns:1fr}.sum{position:static!important}}
-.calc .card{margin-bottom:16px}
-.calc h4,.brief h4{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:26px;margin-bottom:14px}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-@media(max-width:600px){.row{grid-template-columns:1fr}}
-.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-@media(max-width:600px){.opts{grid-template-columns:1fr}}
-.opt{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:8px;cursor:pointer;font-size:14px}
-.opt input{margin-top:3px;accent-color:var(--br)}
-.opt .c{margin-left:auto;color:var(--mu);font-size:13px;white-space:nowrap;padding-left:8px}
-.opt.dis{opacity:.4;cursor:not-allowed}
-.basel{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;font-size:14px;color:var(--mu)}
-.basel span::before{content:"✓ ";color:var(--br)}
-.sum{position:sticky;top:84px}
-.card .tot,.tot{font-family:'Cormorant Garamond',Georgia,serif;font-size:54px;line-height:1;color:var(--br);margin:8px 0 4px}
-.line{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px}
-.line b{font-weight:500;text-align:right}
-.bar{font-size:13px;color:var(--mu);margin-top:8px}
-.bar .t{display:flex;justify-content:space-between;margin-bottom:3px}
-.bar .tr{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
-.bar .fl{height:100%;background:var(--br)}
-.warn{margin-top:12px;padding:12px;border:1px solid var(--em);border-radius:8px;color:var(--em);font-size:14px;display:none}
-.note{font-size:13px;color:var(--mu);margin-top:12px}
-.brief{margin-top:40px}
-.bprog{position:sticky;top:68px;background:var(--bg2);padding:14px 0 10px;z-index:5}
-.bprog .t{display:flex;justify-content:space-between;font-size:14px;color:var(--mu);margin-bottom:6px}
-.bprog .tr{height:4px;background:var(--line);border-radius:2px}
-.bprog .fl{height:100%;background:var(--br);border-radius:2px;transition:width .3s}
-.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0 2px;scrollbar-width:none}
-.tabs button{flex:none;background:none;border:1px solid var(--line);color:var(--mu);border-radius:999px;padding:6px 12px;font:inherit;font-size:13px;cursor:pointer;white-space:nowrap}
-.tabs button.on{border-color:var(--br);color:var(--tx)}
-.tabs button.done{color:var(--br)}
-.q{background:var(--card);border-radius:14px;padding:20px 22px;margin-bottom:12px}
-.q .ql{font-weight:500;margin-bottom:4px}
-.q .qh{font-size:13px;color:var(--mu);margin-bottom:10px}
-.q input[type=text]{margin-top:8px}
-.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}
-.msg{color:var(--br);font-size:14px;margin-top:10px;min-height:20px}
-.bsec{background:var(--bg2)}
-footer{padding:60px 0;border-top:1px solid var(--line);color:var(--mu);font-size:14px}
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
-@media(max-width:800px){.steps{grid-template-columns:1fr}}
-.steps div{border-top:1px solid var(--line);padding-top:18px}
-.steps .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;color:var(--br);line-height:1}
-.steps b{display:block;font-weight:500;margin:6px 0 4px}
-.steps p{color:var(--mu);font-size:15px}
-.light .steps div{border-color:#C9BFAE}
-.light .steps p{color:var(--ml)}
+body{height:100svh;overflow:hidden}
+.land{position:relative;height:100svh;display:flex;flex-direction:column}
+.land>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:kb 34s ease-in-out infinite alternate}
+.land:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,20,23,.88) 0%,rgba(14,20,23,.45) 50%,rgba(14,20,23,.1) 85%),linear-gradient(0deg,rgba(14,20,23,.95) 0%,rgba(14,20,23,0) 55%)}
+.land>*:not(img){position:relative;z-index:1}
+.land>.wrap{width:100%}
+.mid p.eb{font-family:Rubik,Arial,sans-serif;font-size:12px;color:var(--br);margin:0 0 14px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:26px 0}
+.logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:24px;letter-spacing:6px}
+.mid{flex:1;display:flex;flex-direction:column;justify-content:center}
+.mid h1{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(64px,11vw,148px);line-height:.9;opacity:0;animation:up 1.4s .2s forwards}
+.mid p{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(20px,2.4vw,30px);max-width:640px;margin-top:20px;color:#DCD5C9;opacity:0;animation:up 1.4s .5s forwards}
+.mid .eb{opacity:0;animation:up 1.2s forwards}
+.doors{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:34px}
+.door{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:190px;border-radius:18px;overflow:hidden;text-decoration:none;color:var(--tx);padding:22px 24px;border:1px solid rgba(239,233,222,.16);opacity:0;animation:up 1.2s forwards}
+.door:nth-child(1){animation-delay:.8s}.door:nth-child(2){animation-delay:.95s}.door:nth-child(3){animation-delay:1.1s}
+.door img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s,opacity .6s;opacity:.55}
+.door:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(14,20,23,.95) 10%,rgba(14,20,23,.35) 100%);z-index:1}
+.door>*:not(img){position:relative;z-index:2}
+.door:hover img{transform:scale(1.06);opacity:.8}
+.door .n{font-family:'Cormorant Garamond',Georgia,serif;font-size:20px;color:var(--br)}
+.door b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:34px;line-height:1.05;margin:4px 0 6px}
+.door span.d{color:var(--mu);font-size:14px}
+.door .ar{position:absolute;right:22px;top:20px;z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid rgba(239,233,222,.3);display:flex;align-items:center;justify-content:center;transition:background .3s,border-color .3s}
+.door:hover .ar{background:var(--br);border-color:var(--br);color:var(--bg)}
+.door.main{border-color:rgba(194,154,98,.6)}
+.foot{display:flex;justify-content:space-between;color:var(--mu);font-size:12px;letter-spacing:2px;text-transform:uppercase;padding-bottom:22px;opacity:0;animation:up 1s 1.4s forwards}
+@keyframes up{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@media(max-width:860px){body{height:auto;overflow:auto}.land{height:auto;min-height:100svh}.doors{grid-template-columns:1fr}.door{min-height:130px}.mid{padding:40px 0}}
 </style>
 </head>
 <body class="lru">
-<nav id="nav"><div class="wrap in">
- <a class="logo" href="#top">THE ARK</a>
- <div class="links">
-  <a href="#threats"><span class="ru">Угрозы</span><span class="en">Threats</span></a>
-  <a href="#concept"><span class="ru">Концепция</span><span class="en">Concept</span></a>
-  <a href="#options"><span class="ru">Опции</span><span class="en">Options</span></a>
-  <a href="#locations"><span class="ru">Локации</span><span class="en">Locations</span></a>
-  <a href="#calc"><span class="ru">Стоимость</span><span class="en">Cost</span></a>
-  <a href="#brief"><span class="ru">Анкета</span><span class="en">Questionnaire</span></a>
- </div>
- <div class="lang"><button data-l="ru" class="on">RU</button><button data-l="en">EN</button></div>
-</div></nav>
-
-<header class="hero" id="top">
+<div class="land">
  <img src="img/aerial.jpg" alt="">
- <div class="wrap">
+ <div class="wrap top"><span class="logo">THE ARK</span><div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div></div>
+ <div class="wrap mid">
   <p class="eb"><span class="ru">Конфиденциально · только по приглашению</span><span class="en">Confidential · by invitation only</span></p>
   <h1><span class="ru">Ковчег</span><span class="en">The Ark</span></h1>
-  <p class="s"><span class="ru">Частные автономные поселения под ключ для семей, которые думают на поколения вперёд.</span><span class="en">Private, fully autonomous turnkey sanctuaries for families who think in generations.</span></p>
-  <div class="cta"><a class="btn" href="#calc"><span class="ru">Рассчитать стоимость</span><span class="en">Estimate the cost</span></a><a class="btn ghost" href="#brief"><span class="ru">Заполнить анкету</span><span class="en">Fill in the questionnaire</span></a></div>
+  <p><span class="ru">Частные автономные поселения под ключ для семей, которые думают на поколения вперёд.</span><span class="en">Private, fully autonomous turnkey sanctuaries for families who think in generations.</span></p>
  </div>
-</header>
-
-<section class="clock" id="threats">
- <img src="img/earth.jpg" alt="">
- <div class="wrap">
-  <p class="eb"><span class="ru">Часы Судного дня · январь 2026</span><span class="en">The Doomsday Clock · January 2026</span></p>
-  <p class="big"><span class="ru">85 секунд</span><span class="en">85 seconds</span></p>
-  <p class="lead" style="color:var(--tx);font-family:'Cormorant Garamond',Georgia,serif;font-size:28px;max-width:760px"><span class="ru">до «полуночи». Ближе к глобальной катастрофе стрелки не стояли ни разу с 1947 года.</span><span class="en">to midnight. The hands have never been this close to global catastrophe since 1947.</span></p>
-  <p class="src"><span class="ru">Bulletin of the Atomic Scientists, 27.01.2026</span><span class="en">Bulletin of the Atomic Scientists, 27 January 2026</span></p>
+ <div class="wrap doors">
+  <a class="door" href="philosophy.html"><img src="img/earth.jpg" alt=""><span class="ar">→</span><span class="n">01</span><b><span class="ru">Философия</span><span class="en">Philosophy</span></b><span class="d"><span class="ru">Почему сейчас: мир, в который мы входим</span><span class="en">Why now: the world we are entering</span></span></a>
+  <a class="door" href="ark.html"><img src="img/core_entry.jpg" alt=""><span class="ar">→</span><span class="n">02</span><b><span class="ru">Ковчег</span><span class="en">The Ark</span></b><span class="d"><span class="ru">Как устроено поселение и где его строить</span><span class="en">How a settlement works and where to build it</span></span></a>
+  <a class="door main" href="start.html"><img src="img/villa.jpg" alt=""><span class="ar">→</span><span class="n">03</span><b><span class="ru">Ваш проект</span><span class="en">Your project</span></b><span class="d"><span class="ru">Анкета и предварительный расчёт стоимости</span><span class="en">Questionnaire and preliminary cost estimate</span></span></a>
  </div>
-</section>
-
-<section style="padding-top:40px">
- <div class="wrap">
-  <p class="eb"><span class="ru">Карта угроз</span><span class="en">Threat map</span></p>
-  <h2><span class="ru">Девять кризисов, которые уже идут</span><span class="en">Nine crises already under way</span></h2>
-  <div class="g3 mt">
-   <div class="card risk"><h3><span class="ru">Искусственный интеллект</span><span class="en">Artificial intelligence</span></h3><p><span class="ru">38–51% из 2 778 исследователей ИИ допускают риск исхода уровня вымирания не ниже 10%.</span><span class="en">38–51% of 2,778 AI researchers put at least a 10% chance on outcomes as bad as human extinction.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Ядерное оружие</span><span class="en">Nuclear weapons</span></h3><p><span class="ru">12 187 боеголовок в мире, около 2 100 в режиме высокой готовности (SIPRI 2026).</span><span class="en">12,187 warheads worldwide, around 2,100 on high alert (SIPRI 2026).</span></p></div>
-   <div class="card risk"><h3><span class="ru">Мировая война</span><span class="en">World war</span></h3><p><span class="ru">Более 40% из 447 экспертов Atlantic Council ожидают её до 2036 года.</span><span class="en">Over 40% of 447 Atlantic Council experts expect one by 2036.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Пандемии</span><span class="en">Pandemics</span></h3><p><span class="ru">Около 2% в год: шанс пандемии масштаба COVID-19. За жизнь около 38%.</span><span class="en">About a 2% chance per year of a COVID-scale pandemic; about 38% over a lifetime.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Климат</span><span class="en">Climate</span></h3><p><span class="ru">2023–2025: первые три года подряд со средней температурой выше +1,5 °C.</span><span class="en">2023–2025: the first three-year period to average above +1.5 °C.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Вода</span><span class="en">Water</span></h3><p><span class="ru">6,1 млрд человек живут в странах с ненадёжным доступом к пресной воде.</span><span class="en">6.1 billion people live in countries with unreliable freshwater.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Голод</span><span class="en">Hunger</span></h3><p><span class="ru">645 млн голодающих в 2025 году. Голод официально объявлен в Газе и Судане.</span><span class="en">645 million people went hungry in 2025. Famine was confirmed in Gaza and Sudan.</span></p></div>
-   <div class="card risk"><h3><span class="ru">Долги</span><span class="en">Debt</span></h3><p><span class="ru">Мировой госдолг приблизится к 100% ВВП к 2029 году (МВФ).</span><span class="en">Global public debt is set to reach 100% of GDP by 2029 (IMF).</span></p></div>
-   <div class="card risk"><h3><span class="ru">Миграция</span><span class="en">Displacement</span></h3><p><span class="ru">117,8 млн человек вынужденно покинули дома. До 216 млн климатических мигрантов к 2050 году.</span><span class="en">117.8 million people forced from their homes. Up to 216 million climate migrants by 2050.</span></p></div>
-  </div>
-
-  <p class="eb mt" style="margin-top:80px"><span class="ru">Голоса</span><span class="en">Voices</span></p>
-  <h2><span class="ru">Об опасности говорят те, кто создаёт ИИ</span><span class="en">The warnings come from those who build AI</span></h2>
-  <div class="g2 mt">
-   <div class="card quote"><q><span class="ru">«Запомните мои слова: ИИ гораздо опаснее ядерного оружия».</span><span class="en">“Mark my words: AI is far more dangerous than nukes.”</span></q><p class="src">Elon Musk · SXSW, 2018</p></div>
-   <div class="card quote"><q><span class="ru">«Мы обязательно построим бункер, прежде чем выпустим AGI».</span><span class="en">“We’re definitely going to build a bunker before we release AGI.”</span></q><p class="src"><span class="ru">Илья Суцкевер, сооснователь OpenAI · по данным К. Хао, «Empire of AI»</span><span class="en">Ilya Sutskever, OpenAI co-founder · as reported in K. Hao, “Empire of AI”</span></p></div>
-   <div class="card quote"><q><span class="ru">10–20% — вероятность вымирания человечества из-за ИИ в ближайшие 30 лет.</span><span class="en">10–20% — the chance that AI leads to human extinction within 30 years.</span></q><p class="src"><span class="ru">Оценка Джеффри Хинтона, нобелевского лауреата · BBC, 2024</span><span class="en">Geoffrey Hinton’s estimate, Nobel laureate · BBC, 2024</span></p></div>
-   <div class="card quote"><q><span class="ru">«Впервые более чем за полвека ничто не будет сдерживать неконтролируемую гонку ядерных вооружений».</span><span class="en">“For the first time in over half a century, there will be nothing preventing a runaway nuclear arms race.”</span></q><p class="src">Daniel Holz · Bulletin of the Atomic Scientists, 2026</p></div>
-  </div>
-
-  <div class="tl">
-   <div><p class="y">2026</p><p><span class="ru">85 секунд до полуночи. Истёк договор СНВ-3</span><span class="en">85 seconds to midnight. New START has expired</span></p></div>
-   <div><p class="y">2029</p><p><span class="ru">Госдолг мира 100% ВВП (МВФ)</span><span class="en">Global public debt at 100% of GDP (IMF)</span></p></div>
-   <div><p class="y">2030</p><p><span class="ru">Дефицит пресной воды 40%</span><span class="en">40% freshwater gap</span></p></div>
-   <div><p class="y">2036</p><p><span class="ru">40%+ экспертов ждут мировую войну</span><span class="en">40%+ of experts expect a world war</span></p></div>
-  </div>
-
-  <p class="eb" style="margin-top:80px"><span class="ru">Они уже готовятся</span><span class="en">They are already preparing</span></p>
-  <div class="g4 mt" style="margin-top:20px">
-   <div class="card"><h3>Mark Zuckerberg</h3><p><span class="ru">Ранчо на Кауаи с подземным убежищем около 465 м² (Wired, 2023).</span><span class="en">A Kauai ranch with a ~5,000 sq ft underground shelter (Wired, 2023).</span></p></div>
-   <div class="card"><h3>Peter Thiel</h3><p><span class="ru">Гражданство Новой Зеландии после 12 дней в стране (RNZ, 2017).</span><span class="en">New Zealand citizenship after 12 days in the country (RNZ, 2017).</span></p></div>
-   <div class="card"><h3>Larry Page</h3><p><span class="ru">ВНЖ Новой Зеландии по инвесторской визе, 2021.</span><span class="en">New Zealand residency on an investor visa, 2021.</span></p></div>
-   <div class="card"><h3>Reid Hoffman</h3><p><span class="ru">«„Покупаю дом в Новой Зеландии“ — это подмигивание, дальше можно не объяснять» (New Yorker, 2017).</span><span class="en">“Saying you’re ‘buying a house in New Zealand’ is kind of a wink, wink, say no more” (New Yorker, 2017).</span></p></div>
-  </div>
- </div>
-</section>
-
-<section class="stmt">
- <img src="img/night.jpg" alt="">
- <div class="wrap"><p class="eb"><span class="ru">Наш ответ</span><span class="en">Our answer</span></p>
- <p><span class="ru">Бункер помогает пережить катастрофу.<br><span style="color:var(--br)">Ковчег позволяет жить дальше.</span></span><span class="en">A bunker helps you survive a catastrophe.<br><span style="color:var(--br)">An Ark lets you go on living.</span></span></p></div>
-</section>
-
-<section class="light" id="concept">
- <div class="wrap">
-  <p class="eb"><span class="ru">Концепция</span><span class="en">Concept</span></p>
-  <h2><span class="ru">Что такое «Ковчег»</span><span class="en">What is The Ark</span></h2>
-  <p class="lead"><span class="ru">Частное поселение для одной большой семьи или нескольких семей: спрятано в природе, полностью автономно и готово принять своих жителей в любой момент. У воды, в джунглях или в горах.</span><span class="en">A private settlement for one extended family or several families: hidden in nature, fully autonomous and ready to receive its residents at any moment. By the water, in the jungle or in the mountains.</span></p>
-  <div class="g3 mt">
-   <div class="card"><h3><span class="ru">Автономия</span><span class="en">Autonomy</span></h3><p><span class="ru">Своя еда, вода и энергия на годы вперёд.</span><span class="en">Its own food, water and energy for years ahead.</span></p></div>
-   <div class="card"><h3><span class="ru">Тишина</span><span class="en">Silence</span></h3><p><span class="ru">Без интернета, связи и камер. Аварийная связь только по протоколу.</span><span class="en">No internet, signal or cameras. Emergency comms by protocol only.</span></p></div>
-   <div class="card"><h3><span class="ru">Медицина</span><span class="en">Medicine</span></h3><p><span class="ru">От медпункта до клиники с операционной и врачом на месте.</span><span class="en">From a medical station to a clinic with an operating room and resident doctor.</span></p></div>
-   <div class="card"><h3><span class="ru">Знание</span><span class="en">Knowledge</span></h3><p><span class="ru">Библиотека бумажных книг, архив и семенной фонд в скале.</span><span class="en">A library of printed books, an archive and a seed vault in the rock.</span></p></div>
-   <div class="card"><h3><span class="ru">Сообщество</span><span class="en">Community</span></h3><p><span class="ru">Общий стол, школа для детей, свой круг людей.</span><span class="en">A shared table, a school for the children, a trusted circle.</span></p></div>
-   <div class="card"><h3><span class="ru">Под ключ</span><span class="en">Turnkey</span></h3><p><span class="ru">От выбора земли до запасов, персонала и регламентов.</span><span class="en">From land to provisions, staff and protocols.</span></p></div>
-  </div>
-  <div class="wide"><img src="img/masterplan.jpg" alt=""></div>
-  <div class="gal">
-   <figure><img src="img/core_entry.jpg" alt="" loading="lazy"><figcaption><b>Ark Core</b><span><span class="ru">Библиотека, вырезанная в скале у водопада.</span><span class="en">A library carved into the rock by the waterfall.</span></span></figcaption></figure>
-   <figure><img src="img/library.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Читальный зал</span><span class="en">Reading hall</span></b><span><span class="ru">100 000 бумажных книг и ни одного сервера.</span><span class="en">100,000 printed books and not a single server.</span></span></figcaption></figure>
-   <figure><img src="img/villa.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Виллы</span><span class="en">Villas</span></b><span><span class="ru">Павильоны на сваях в кронах деревьев.</span><span class="en">Pavilions on stilts in the canopy.</span></span></figcaption></figure>
-   <figure><img src="img/villa_interior.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Интерьер</span><span class="en">Interior</span></b><span><span class="ru">Книги, игры и разговоры вместо экранов.</span><span class="en">Books, games and conversation instead of screens.</span></span></figcaption></figure>
-   <figure><img src="img/section.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Разрез</span><span class="en">Section</span></b><span><span class="ru">Архив, семенной фонд и запасы на трёх уровнях в граните.</span><span class="en">Archive, seed vault and reserves on three levels in the granite.</span></span></figcaption></figure>
-   <figure><img src="img/vault.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Хранилище</span><span class="en">Vault</span></b><span><span class="ru">Семена и продовольствие на годы.</span><span class="en">Seeds and food for years.</span></span></figcaption></figure>
-   <figure><img src="img/garden.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Еда</span><span class="en">Food</span></b><span><span class="ru">Террасы, сады, теплицы, животноводство.</span><span class="en">Terraces, orchards, greenhouses, livestock.</span></span></figcaption></figure>
-   <figure><img src="img/energy.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Вода и энергия</span><span class="en">Water and energy</span></b><span><span class="ru">МикроГЭС, солнце, накопители, очистка воды.</span><span class="en">Micro-hydro, solar, storage, water purification.</span></span></figcaption></figure>
-   <figure><img src="img/clinic.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Клиника</span><span class="en">Clinic</span></b><span><span class="ru">Операционная и врач на территории.</span><span class="en">An operating room and a resident doctor.</span></span></figcaption></figure>
-   <figure><img src="img/dinner.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Жизнь</span><span class="en">Life</span></b><span><span class="ru">Общий стол и вечера у водопада.</span><span class="en">A shared table and evenings by the waterfall.</span></span></figcaption></figure>
-  </div>
- </div>
-</section>
-
-<section id="options">
- <div class="wrap">
-  <p class="eb"><span class="ru">Конфигурация</span><span class="en">Configuration</span></p>
-  <h2><span class="ru">База плюс опции на ваш выбор</span><span class="en">A core package plus the options you choose</span></h2>
-  <p class="lead"><span class="ru">Каждый ковчег собирается под заказчика. Базовая комплектация есть всегда, остальное выбираете вы.</span><span class="en">Every Ark is built around its client. The core package is always included; you choose the rest.</span></p>
-  <div class="mt">
-   <span class="pill"><span class="ru">Энергия</span><span class="en">Energy</span></span><span class="pill"><span class="ru">Вода</span><span class="en">Water</span></span><span class="pill"><span class="ru">Огород и теплица</span><span class="en">Garden and greenhouse</span></span><span class="pill"><span class="ru">Медпункт</span><span class="en">Medical station</span></span><span class="pill"><span class="ru">Дом семьи</span><span class="en">Family home</span></span><span class="pill"><span class="ru">Дом персонала</span><span class="en">Staff housing</span></span><span class="pill"><span class="ru">Охрана</span><span class="en">Security</span></span><span class="pill"><span class="ru">Тихая зона</span><span class="en">Silent zone</span></span>
-  </div>
-  <div class="gal">
-   <figure><img src="img/helipad.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Вертолётная площадка</span><span class="en">Helipad</span></b><span><span class="ru">С ангаром и запасом авиатоплива.</span><span class="en">With a hangar and aviation fuel.</span></span></figcaption></figure>
-   <figure><img src="img/pier.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Причал для яхты</span><span class="en">Yacht pier</span></b><span><span class="ru">Глубоководный, с эллингом в скалах.</span><span class="en">Deep-water, with a boathouse in the rocks.</span></span></figcaption></figure>
-   <figure><img src="img/store.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Стратегический склад</span><span class="en">Strategic store</span></b><span><span class="ru">Семена, аптека, биобанк, запчасти.</span><span class="en">Seeds, pharmacy, biobank, spare parts.</span></span></figcaption></figure>
-   <figure><img src="img/shelter.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Укрытие в скале</span><span class="en">Rock shelter</span></b><span><span class="ru">Фильтровентиляция, спальни, кухня, вода.</span><span class="en">Filtered air, bedrooms, a kitchen, water.</span></span></figcaption></figure>
-  </div>
-  <div class="mt" id="optlist"></div>
- </div>
-</section>
-
-<section class="light" id="locations">
- <div class="wrap">
-  <p class="eb"><span class="ru">Где строить</span><span class="en">Where to build</span></p>
-  <h2><span class="ru">Восемь рекомендованных территорий</span><span class="en">Eight recommended territories</span></h2>
-  <p class="lead"><span class="ru">Отбор по научным данным: устойчивость к коллапсу (King &amp; Jones, 2021), модель ядерной зимы (Xia et al., Nature Food, 2022), индекс миролюбия (GPI 2026), право иностранцев на землю. Нажмите на точку или карточку.</span><span class="en">Selected using research: resilience to collapse (King &amp; Jones, 2021), the nuclear-winter model (Xia et al., Nature Food, 2022), the Global Peace Index 2026 and foreign land rights. Tap a pin or a card.</span></p>
- </div>
- <div class="wrap"><div style="background:var(--bg);border-radius:14px;padding:24px;margin-top:40px"><div class="map" id="map" style="margin-top:0"><img src="img/worldmap.png" alt=""></div></div>
-  <div class="locs" id="locs"></div>
-  <div class="prof" id="prof"></div>
-  <div class="tw"><table id="matrix" style="color:var(--tl)"></table></div>
-  <p class="src"><span class="ru">Оценки по шкале 1–10 — наше экспертное суждение на основе исследований и законодательства (ноябрь 2026).</span><span class="en">Scores on a 1–10 scale are our expert judgement based on research and legislation (November 2026).</span></p>
- </div>
-</section>
-
-<section id="calc">
- <div class="wrap">
-  <p class="eb"><span class="ru">Стоимость</span><span class="en">Cost</span></p>
-  <h2><span class="ru">Себестоимость плюс 20%</span><span class="en">Cost plus 20%</span></h2>
-  <div class="g3 mt">
-   <div class="card"><p class="num">100%</p><h3><span class="ru">Честная себестоимость</span><span class="en">Honest cost</span></h3><p><span class="ru">Открытая смета. Строим как для себя и не раздуваем бюджет.</span><span class="en">An open budget. We build as if for ourselves and never inflate it.</span></p></div>
-   <div class="card"><p class="num">+20%</p><h3><span class="ru">Вознаграждение исполнителя</span><span class="en">Contractor’s fee</span></h3><p><span class="ru">Фиксированный процент от каждого потраченного доллара.</span><span class="en">A fixed share of every dollar spent.</span></p></div>
-   <div class="card"><p class="num"><span class="ru">от $15 млн</span><span class="en">from $15m</span></p><h3><span class="ru">Минимальный проект</span><span class="en">Minimum project</span></h3><p><span class="ru">Ограниченное число заказов в год.</span><span class="en">A limited number of commissions per year.</span></p></div>
-  </div>
-  <div class="calc">
-   <div>
-    <div class="card"><h4><span class="ru">Локация</span><span class="en">Location</span></h4>
-     <div class="row"><div><label class="f"><span class="ru">Страна</span><span class="en">Country</span></label><select id="c_loc"></select></div><div><label class="f"><span class="ru">Площадь участка, га</span><span class="en">Site area, ha</span></label><input type="number" id="c_ha" min="2" max="500" value="30"></div></div>
-     <label class="f" style="margin-top:14px"><span class="ru">Тип участка</span><span class="en">Site type</span></label><div class="seg" id="c_terrain"></div></div>
-    <div class="card"><h4><span class="ru">Дома и люди</span><span class="en">Homes and people</span></h4>
-     <div class="row">
-      <div><label class="f"><span class="ru">Количество вилл</span><span class="en">Number of villas</span></label><div class="rng"><input type="range" id="c_villas" min="1" max="20" value="6"><output id="c_o_villas"></output></div></div>
-      <div><label class="f"><span class="ru">Площадь виллы, м²</span><span class="en">Villa size, m²</span></label><div class="rng"><input type="range" id="c_area" min="150" max="800" step="25" value="250"><output id="c_o_area"></output></div></div>
-      <div><label class="f"><span class="ru">Жителей</span><span class="en">Residents</span></label><div class="rng"><input type="range" id="c_people" min="2" max="80" value="20"><output id="c_o_people"></output></div></div>
-      <div><label class="f"><span class="ru">Персонал</span><span class="en">Staff</span></label><div class="rng"><input type="range" id="c_staff" min="5" max="120" value="30"><output id="c_o_staff"></output></div></div>
-      <div><label class="f"><span class="ru">Автономия запасов, лет</span><span class="en">Reserves autonomy, years</span></label><div class="rng"><input type="range" id="c_years" min="1" max="15" value="5"><output id="c_o_years"></output></div></div>
-     </div>
-     <label class="f" style="margin-top:14px"><span class="ru">Уровень отделки</span><span class="en">Finish level</span></label><div class="seg" id="c_finish"></div></div>
-    <div class="card"><h4><span class="ru">Базовая комплектация</span><span class="en">Core package</span></h4><div class="basel" id="c_base"></div></div>
-    <div class="card"><h4>Ark Core</h4><div class="seg" id="c_core"></div></div>
-    <div id="c_groups"></div>
-   </div>
-   <div class="sum"><div class="card">
-    <p class="eb"><span class="ru">Итого без земли</span><span class="en">Total excluding land</span></p>
-    <p class="tot" id="c_total"></p><p class="mu" style="font-size:14px" id="c_range"></p>
-    <div style="margin-top:14px;border-top:1px solid var(--line)">
-     <div class="line"><span><span class="ru">Себестоимость</span><span class="en">Cost</span></span><b id="c_cost"></b></div>
-     <div class="line"><span><span class="ru">Вознаграждение, 20%</span><span class="en">Fee, 20%</span></span><b id="c_fee"></b></div>
-     <div class="line"><span><span class="ru">Земля (ориентир)</span><span class="en">Land (guideline)</span></span><b id="c_land"></b></div>
-     <div class="line"><span><span class="ru">Итого с землёй</span><span class="en">Total with land</span></span><b id="c_all"></b></div>
-     <div class="line"><span><span class="ru">Содержание в год</span><span class="en">Annual running cost</span></span><b id="c_opex"></b></div>
-    </div>
-    <div id="c_bars"></div>
-    <div class="warn" id="c_warn"><span class="ru">Проекты ниже $15 млн мы не берём: добавьте опции или увеличьте масштаб.</span><span class="en">We do not take projects below $15 million: add options or increase the scale.</span></div>
-    <button class="btn" style="width:100%;margin-top:14px" id="c_tobrief"><span class="ru">Перейти к анкете</span><span class="en">Go to the questionnaire</span></button>
-    <p class="note"><span class="ru">Оценка ориентировочная: ±15–20%. Цены зависят от участка, логистики и курса. Земля в 20% не входит.</span><span class="en">Indicative estimate: ±15–20%. Prices depend on the site, logistics and exchange rates. Land is not subject to the 20% fee.</span></p>
-   </div></div>
-  </div>
- </div>
-</section>
-
-<section class="light">
- <div class="wrap">
-  <p class="eb"><span class="ru">Как мы работаем</span><span class="en">How we work</span></p>
-  <h2><span class="ru">От анкеты до ключей</span><span class="en">From questionnaire to keys</span></h2>
-  <div class="steps">
-   <div><p class="n">01</p><b><span class="ru">Анкета</span><span class="en">Questionnaire</span></b><p><span class="ru">Вы выбираете состав: локацию, дома, персонал, опции.</span><span class="en">You choose the scope: location, homes, staff, options.</span></p></div>
-   <div><p class="n">02</p><b><span class="ru">Концепт и смета</span><span class="en">Concept and budget</span></b><p><span class="ru">Концепция и расчёт по принципу «себестоимость + 20%».</span><span class="en">A concept and cost estimate on a cost-plus-20% basis.</span></p></div>
-   <div><p class="n">03</p><b><span class="ru">Подбор земли</span><span class="en">Land</span></b><p><span class="ru">Участок, юридическая структура, ВНЖ.</span><span class="en">Site, legal structure, residency.</span></p></div>
-   <div><p class="n">04</p><b><span class="ru">Архитектура</span><span class="en">Architecture</span></b><p><span class="ru">Генплан и проект под вашу семью.</span><span class="en">Master plan and design for your family.</span></p></div>
-   <div><p class="n">05</p><b><span class="ru">Строительство</span><span class="en">Construction</span></b><p><span class="ru">Под ключ: стройка, запасы, техника, персонал.</span><span class="en">Turnkey: build, reserves, equipment, staff.</span></p></div>
-   <div><p class="n">06</p><b><span class="ru">Эксплуатация</span><span class="en">Operations</span></b><p><span class="ru">Регламенты, обслуживание, ежегодные учения.</span><span class="en">Protocols, maintenance, annual drills.</span></p></div>
-  </div>
-  <div class="g4 mt" style="margin-top:60px">
-   <div class="card"><h3><span class="ru">Опыт</span><span class="en">Experience</span></h3><p><span class="ru">Готовые кейсы строительства поселений в Украине.</span><span class="en">Completed settlement projects in Ukraine.</span></p></div>
-   <div class="card"><h3><span class="ru">Скорость</span><span class="en">Speed</span></h3><p><span class="ru">От анкеты до заселения без лишних этапов.</span><span class="en">From questionnaire to move-in with no wasted stages.</span></p></div>
-   <div class="card"><h3><span class="ru">Связи</span><span class="en">Reach</span></h3><p><span class="ru">Административные возможности и контакты по всему миру.</span><span class="en">Administrative capabilities and connections worldwide.</span></p></div>
-   <div class="card"><h3><span class="ru">Ответственность</span><span class="en">Responsibility</span></h3><p><span class="ru">Работаем как для себя и отвечаем за каждый доллар.</span><span class="en">We build as if for ourselves and answer for every dollar.</span></p></div>
-  </div>
- </div>
-</section>
-
-<section class="bsec" id="brief">
- <div class="wrap">
-  <p class="eb"><span class="ru">Анкета заказчика</span><span class="en">Client questionnaire</span></p>
-  <h2><span class="ru">Расскажите о вашем ковчеге</span><span class="en">Tell us about your Ark</span></h2>
-  <p class="lead"><span class="ru">52 вопроса в 12 разделах, готовые варианты ответов. Ответы сохраняются в вашем браузере. В конце их можно скопировать или скачать и отправить нам.</span><span class="en">52 questions in 12 sections, with ready-made answers. Your answers are saved in your browser. At the end you can copy or download them and send them to us.</span></p>
-  <div class="brief">
-   <div class="bprog"><div class="t"><span id="b_pt"></span><span id="b_pp"></span></div><div class="tr"><div class="fl" id="b_pf"></div></div><div class="tabs" id="b_tabs"></div></div>
-   <div id="b_main"></div>
-  </div>
- </div>
-</section>
-
-<section class="stmt" style="min-height:70vh">
- <img src="img/arrival.jpg" alt="" loading="lazy">
- <div class="wrap"><p class="eb"><span class="ru">Только по приглашению</span><span class="en">By invitation only</span></p>
- <p><span class="ru">Место в ковчеге не покупают в последний момент.</span><span class="en">A place on the Ark is not bought at the last minute.</span></p></div>
-</section>
-
-<footer><div class="wrap"><span class="ru">THE ARK · Частные автономные поселения под ключ · Проекты от $15 млн</span><span class="en">THE ARK · Private autonomous turnkey sanctuaries · Projects from $15 million</span></div></footer>
-
-<script>
-let L="ru";
-try{L=localStorage.getItem("ark_lang")||"ru"}catch(e){}
-const $=id=>document.getElementById(id);
-const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
-const hooks=[];
-function setLang(l){L=l;document.body.className="l"+l;document.documentElement.lang=l;
- document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l==l));
- try{localStorage.setItem("ark_lang",l)}catch(e){} hooks.forEach(h=>h())}
-document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>setLang(b.dataset.l));
-addEventListener("scroll",()=>$("nav").classList.toggle("solid",scrollY>40));
-
-/* ---------- options list ---------- */
-const OPT=[
- {ru:"Территория, дома и транспорт",en:"Site, homes and transport",i:[["На берегу со своей бухтой, в джунглях или в горах","On the coast with a private bay, in the jungle or in the mountains"],["Два объекта в разных полушариях","Two sites in different hemispheres"],["От одной резиденции до 12+ вилл, гостевые дома","From one residence to 12+ villas, guest houses"],["Дом персонала нужной численности","Staff housing at the size you need"],["Вертолётная площадка, ангар, авиатопливо","Helipad, hangar, aviation fuel"],["Причал для яхты, эллинг, тендер","Yacht pier, boathouse, tender"],["Площадка для гидросамолёта","Seaplane landing"],["Внедорожники, электробагги, спецтехника","4x4s, electric buggies, machinery"]]},
- {ru:"Запасы, безопасность, энергия",en:"Reserves, security, energy",i:[["Семенной фонд и биобанк семьи","Seed bank and family biobank"],["Лекарства и холодильная аптека","Medicines and cold-chain pharmacy"],["Продукты, топливо, запчасти, фильтры","Food, fuel, spare parts, filters"],["Укрытие в скале с фильтровентиляцией","Rock shelter with filtered air"],["Радиационный и химический мониторинг","Radiation and chemical monitoring"],["Хранилище ценностей","Vault for valuables"],["Аварийная связь: КВ-радио и спутник в экранированном боксе","Emergency comms: HF radio and satellite in a shielded box"],["МикроГЭС, солнце, накопители, опреснитель","Micro-hydro, solar, storage, desalination"]]},
- {ru:"Медицина, хозяйство и жизнь",en:"Medicine, farming and life",i:[["Клиника с операционной","Clinic with operating room"],["Лаборатория, рентген, стоматология, роды","Lab, X-ray, dental, maternity"],["Террасы, теплицы, завоз плодородного грунта","Terraces, greenhouses, imported fertile soil"],["Козы, куры, пасека, рыбный пруд","Goats, chickens, bees, fish pond"],["Пекарня, сыроварня, мастерские","Bakery, dairy, workshops"],["Школа и учителя","School and teachers"],["Спортзал, бассейн, спа","Gym, pool, spa"],["Винный погреб, обсерватория, офлайн-архив","Wine cellar, observatory, offline archive"]]}];
-function renderOpts(){$("optlist").innerHTML=OPT.map((g,k)=>`<details ${k==0?"open":""}><summary>${g[L]}</summary><ul>${g.i.map(x=>`<li>${L=="ru"?x[0]:x[1]}</li>`).join("")}</ul></details>`).join("")}
-hooks.push(renderOpts);
-
-/* ---------- locations ---------- */
-const LOCS=[
- {ru:"Тасмания",en:"Tasmania",c:[146.5,-42],s:[9,7,9,6,8],v:["Лучшее сочетание научных данных и доступной земли.","The best mix of science-backed survivability and buyable land."],
-  p:[["Австралия лучше всех держится в модели ядерной зимы","Australia fares best in the nuclear-winter model"],["100% электричества из ВИЭ с 2020 года","100% renewable electricity since 2020"],["Остров: защита от пандемий","An island: protection from pandemics"],["Далеко от всех театров военных действий","Far from every theatre of war"]],
-  m:[["Лесные пожары","Bushfires"],["Земля для иностранцев только с одобрения FIRB","Foreign land purchases need FIRB approval"],["Стройка должна начаться в течение 4 лет","Construction must start within 4 years"]]},
- {ru:"Новая Зеландия",en:"New Zealand",c:[171.5,-43.5],s:[10,6,9,4,9],v:["Эталон убежища: сюда уже едут миллиардеры.","The benchmark refuge: billionaires already go here."],
-  p:[["№1 по устойчивости к коллапсу (King & Jones)","#1 for resilience to collapse (King & Jones)"],["Топ-3 самых мирных стран мира (GPI 2026)","Top 3 most peaceful countries (GPI 2026)"],["Экспорт еды покрывает ~3,9 потребности страны","Food exports cover ~3.9× national needs"],["Изоляция в южной части Тихого океана","Isolated in the South Pacific"]],
-  m:[["Вулканы и землетрясения","Volcanoes and earthquakes"],["Участок больше 5 га только с согласия OIO","Over 5 ha needs OIO consent"],["«Золотая виза» от NZ$5 млн, сельхозземля закрыта","Golden visa from NZ$5m; farmland excluded"]]},
- {ru:"Уругвай",en:"Uruguay",c:[-56,-33],s:[8,8,9,9,7],v:["Самый простой юридический путь и стабильность.","The easiest legal path, and stability."],
-  p:[["Самая мирная страна Латинской Америки","Most peaceful country in Latin America"],["98% электричества из ВИЭ (2025)","98% renewable electricity (2025)"],["Иностранцы покупают землю на равных","Foreigners buy land on equal terms"],["Сильное сельское хозяйство, пресная вода","Strong agriculture and fresh water"]],
-  m:[["Равнинный ландшафт, нет джунглей","Flat landscape, no jungle"],["Налог на имущество выше ~$165 тыс.","Wealth tax above ~$165k"],["Расходы на сделку 7,5–9%","Transaction costs of 7.5–9%"]]},
- {ru:"Чили, Патагония",en:"Chile, Patagonia",c:[-72.5,-42],s:[8,5,8,8,7],v:["Дикая природа, ледниковая вода, полная приватность.","Wild nature, glacial water, total privacy."],
-  p:[["Лучший климатический индекс в Латинской Америке","Best climate-readiness score in Latin America"],["Частные сделки без разрешений","Private sales need no permits"],["Огромные долины в частной собственности","Vast privately owned valleys"],["Удалённость от мировых конфликтов","Far from global conflicts"]],
-  m:[["Сильнейшие землетрясения (1960: 9,5)","The strongest earthquakes (9.5 in 1960)"],["Дорогое сейсмостойкое строительство","Costly seismic-resistant construction"],["Суровый климат на юге","Harsh climate in the far south"]]},
- {ru:"Аргентина",en:"Argentina",c:[-68.8,-33],s:[7,7,10,6,7],v:["Максимальная продовольственная автономия.","Maximum food autonomy."],
-  p:[["Один из лидеров по выживанию в ядерной зиме","Among the best survivors of a nuclear winter"],["Огромный аграрный потенциал","Huge agricultural potential"],["С 29.09.2026 сняты ограничения на землю","Land limits lifted on 29.09.2026"],["Плодородные пампасы и запасы пресной воды","Fertile pampas and freshwater reserves"]],
-  m:[["Политическая нестабильность","Political volatility"],["Оппозиция добивается отмены указа о земле","Opposition seeks to reverse the land decree"],["Слабые позиции в индексах стабильности","Weak scores on stability indices"]]},
- {ru:"Парагвай",en:"Paraguay",c:[-57.5,-24],s:[7,7,9,8,4],v:["Недорогое плодородное убежище в центре континента.","An affordable, fertile refuge at the heart of the continent."],
-  p:[["В списке устойчивых в модели ядерной зимы","Listed among nuclear-winter survivors"],["Дешёвая плодородная земля, налог на сделку 1,5%","Cheap fertile land, 1.5% transfer tax"],["Открыт для иностранцев","Open to foreign buyers"],["Нет выхода к морю: вне морских маршрутов","Landlocked: away from sea routes"]],
-  m:[["Слабые государственные институты","Weak state institutions"],["Сложная логистика для люкс-строительства","Difficult logistics for luxury construction"],["Ограничения у границ для соседних стран","Border-zone limits for neighbouring nationals"]]},
- {ru:"Коста-Рика",en:"Costa Rica",c:[-84,10],s:[6,5,7,8,9],v:["Тропический флагман: армии нет с 1948 года.","The tropical flagship: no army since 1948."],
-  p:[["Без армии: не военная цель и не участник войн","No army: not a military target, not a combatant"],["98,6% электричества из ВИЭ (2025)","98.6% renewable electricity (2025)"],["Иностранцы владеют землёй на равных","Foreigners own land on equal terms"],["Круглогодичный урожай в тропиках","Year-round tropical harvest"]],
-  m:[["Около 17 убийств на 100 тыс. жителей","About 17 homicides per 100,000"],["Сейсмика и вулканы","Earthquakes and volcanoes"],["Прибрежные 200 м: только концессия","The 200 m coastal strip is concession-only"]]},
- {ru:"Сейшелы",en:"Seychelles",c:[55.5,-4.6],s:[8,4,2,4,10],v:["Ультралюкс и изоляция острова в Индийском океане.","Ultra-luxury and island isolation in the Indian Ocean."],
-  p:[["Вне пояса циклонов","Outside the cyclone belt"],["Удалённость от всех театров военных действий","Far from every theatre of war"],["Островная изоляция при пандемиях","Island isolation in a pandemic"],["Мировой бренд роскошного отдыха","A world-class luxury brand"]],
-  m:[["Около 90% еды импортируется","About 90% of food is imported"],["Побережье уязвимо к подъёму моря","Coasts exposed to sea-level rise"],["Каждая покупка с разрешения правительства","Every purchase needs government sanction"]]}];
-let selLoc=0;
-function renderLocs(){
- const lx=L=="ru"?0:1;
- $("map").querySelectorAll(".pin").forEach(p=>p.remove());
- LOCS.forEach((l,i)=>{const b=document.createElement("button");b.className="pin"+(i==selLoc?" on":"");b.textContent=i+1;b.title=l[L];
-  b.style.left=((l.c[0]+180)/360*100)+"%";b.style.top=((78-l.c[1])/134*100)+"%";b.onclick=()=>{selLoc=i;renderLocs()};$("map").appendChild(b)});
- $("locs").innerHTML=LOCS.map((l,i)=>`<div class="loc ${i==selLoc?"on":""}" data-i="${i}"><b>${i+1}. ${l[L]}</b><div class="sc">${l.s.reduce((a,b)=>a+b)}/50</div></div>`).join("");
- $("locs").querySelectorAll(".loc").forEach(d=>d.onclick=()=>{selLoc=+d.dataset.i;renderLocs()});
- const l=LOCS[selLoc];
- $("prof").innerHTML=`<div class="card" style="background:var(--bg);color:var(--tx)"><h3>${l[L]}</h3><p class="v">${l.v[lx]}</p><p class="plus">${L=="ru"?"Почему подходит":"Why it fits"}</p><ul>${l.p.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul></div>
- <div class="card" style="background:var(--bg);color:var(--tx)"><p class="minus" style="margin-top:0">${L=="ru"?"Риски":"Risks"}</p><ul>${l.m.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul>
- <div style="margin-top:18px">${(L=="ru"?["Безопасность","Климат","Еда и вода","Доступ","Комфорт"]:["Safety","Climate","Food & water","Access","Comfort"]).map((n,k)=>`<div class="bar"><div class="t"><span>${n}</span><span>${l.s[k]}/10</span></div><div class="tr"><div class="fl" style="width:${l.s[k]*10}%"></div></div></div>`).join("")}</div></div>`;
- const cols=L=="ru"?["Локация","Безопасность и изоляция","Климат и риски","Еда и вода","Доступ для иностранцев","Комфорт","Итого"]:["Location","Safety and isolation","Climate and hazards","Food and water","Foreign access","Comfort","Total"];
- $("matrix").innerHTML=`<tr>${cols.map(c=>`<th style="color:var(--brl)">${c}</th>`).join("")}</tr>`+LOCS.map(l=>`<tr><td><b>${l[L]}</b></td>${l.s.map(v=>`<td>${v}</td>`).join("")}<td><b>${l.s.reduce((a,b)=>a+b)}</b>/50</td></tr>`).join("");
-}
-hooks.push(renderLocs);
-
-/* ---------- calculator ---------- */
-(function(){
-const LOC=[{k:"sey",i:7,m:1.35,land:[250,600],sal:1.2,coast:1},{k:"nz",i:1,m:1.35,land:[40,120],sal:1.6,coast:1},{k:"tas",i:0,m:1.2,land:[15,40],sal:1.5,coast:1},{k:"cr",i:6,m:1.0,land:[25,90],sal:0.7,coast:1},{k:"cl",i:3,m:1.1,land:[5,30],sal:0.8,coast:1},{k:"uy",i:2,m:0.95,land:[6,15],sal:0.9,coast:1},{k:"ar",i:4,m:0.85,land:[3,15],sal:0.6,coast:1},{k:"py",i:5,m:0.8,land:[2,8],sal:0.5,coast:0}];
-const TER=[{k:"coast",ru:"У воды",en:"By the water",m:1},{k:"jungle",ru:"В джунглях",en:"In the jungle",m:1.06},{k:"mount",ru:"В горах",en:"In the mountains",m:1.1}];
-const FIN=[{k:"p",ru:"Премиум",en:"Premium",m:1},{k:"u",ru:"Ультралюкс",en:"Ultra-luxury",m:1.35}];
-const CORE=[{k:"none",ru:"Без Ark Core",en:"No Ark Core",c:0},{k:"block",ru:"Заглублённый блок",en:"Sunken block",c:3},{k:"rock",ru:"Библиотека и 3 уровня в скале",en:"Library and 3 levels in rock",c:6.5}];
-const G=[
- {ru:"Транспорт",en:"Transport",o:[{k:"heli",ru:"Вертолётная площадка, ангар, топливо",en:"Helipad, hangar, fuel",c:1.1,on:1},{k:"pier",ru:"Глубоководный причал для яхты, эллинг",en:"Deep-water yacht pier, boathouse",c:2.5,on:1,coast:1},{k:"sea",ru:"Площадка для гидросамолёта",en:"Seaplane landing",c:0.3,coast:1},{k:"fleet",ru:"Автопарк и спецтехника",en:"Vehicle fleet and machinery",c:0.5}]},
- {ru:"Запасы и безопасность",en:"Reserves and security",o:[{k:"store",ru:"Расширенный стратегический склад",en:"Extended strategic store",c:0.9,on:1},{k:"bio",ru:"Биобанк семьи",en:"Family biobank",c:0.6,on:1},{k:"shelter",ru:"Укрытие в скале",en:"Rock shelter",c:2.2,on:1},{k:"vault",ru:"Хранилище ценностей",en:"Vault for valuables",c:0.3},{k:"rad",ru:"Радиационный мониторинг",en:"Radiation monitoring",c:0.2},{k:"sec",ru:"Расширенная охрана и башни",en:"Extended security and towers",c:1.4,on:1},{k:"comm",ru:"Аварийная связь по протоколу",en:"Emergency comms by protocol",c:0.15}]},
- {ru:"Энергия и вода",en:"Energy and water",o:[{k:"hydro",ru:"МикроГЭС",en:"Micro-hydro",c:1.1,on:1},{k:"solar",ru:"Расширенное солнце и накопители",en:"Larger solar and storage",c:0.9},{k:"desal",ru:"Опреснитель",en:"Desalination",c:0.7,coast:1},{k:"gen",ru:"Доп. генераторы",en:"Extra generators",c:0.3}]},
- {ru:"Медицина",en:"Medicine",o:[{k:"clinic",ru:"Клиника с операционной",en:"Clinic with operating room",c:1.8,on:1},{k:"medplus",ru:"Лаборатория, рентген, стоматология, роды",en:"Lab, X-ray, dental, maternity",c:1.1}]},
- {ru:"Хозяйство",en:"Farming",o:[{k:"terr",ru:"Террасы и завоз грунта",en:"Terraces and imported soil",c:1.1,on:1},{k:"live",ru:"Животноводство, аквакультура, пасека",en:"Livestock, aquaculture, bees",c:0.4,on:1},{k:"craft",ru:"Пекарня, сыроварня, мастерские",en:"Bakery, dairy, workshops",c:0.6}]},
- {ru:"Жизнь",en:"Life",o:[{k:"school",ru:"Школа",en:"School",c:0.6,on:1},{k:"spa",ru:"Спортзал, бассейн, спа",en:"Gym, pool, spa",c:1.1},{k:"cellar",ru:"Винный погреб",en:"Wine cellar",c:0.3},{k:"obs",ru:"Обсерватория",en:"Observatory",c:0.45}]}];
-const BASE={ru:["Энергия: солнце, накопители, генератор","Вода: источник, очистка, резервуар","Еда: огород, теплица, склад","Медпункт с аптекой","Дом персонала","Охрана периметра","Дороги, сети, настилы","Общий павильон","Запасы на выбранный срок"],en:["Energy: solar, storage, generator","Water: source, purification, reservoir","Food: garden, greenhouse, store","Medical station with pharmacy","Staff housing","Perimeter security","Roads, utilities, walkways","Shared pavilion","Reserves for the chosen period"]};
-const CATS={ru:{villas:"Виллы",staff:"Дом персонала",base:"Базовые системы",core:"Ark Core",opts:"Опции",soft:"Проект и управление",cont:"Резерв"},en:{villas:"Villas",staff:"Staff housing",base:"Core systems",core:"Ark Core",opts:"Options",soft:"Design and management",cont:"Contingency"}};
-let st={loc:"sey",ter:"coast",fin:"p",core:"rock",on:{}};G.forEach(g=>g.o.forEach(o=>st.on[o.k]=!!o.on));
-const fmt=v=>{const x=v/1e6,s=x>=100?x.toFixed(0):x.toFixed(1);return L=="ru"?"$"+s.replace(".",",")+" млн":"$"+s+"m"};
-const cur=()=>LOC.find(l=>l.k==st.loc);
-function seg(id,arr,key,dis){const el=$(id);el.innerHTML="";arr.forEach(a=>{const b=document.createElement("button");b.textContent=a[L]+(id=="c_core"&&a.c?" · "+fmt(a.c*1e6*cur().m):"");if(st[key]==a.k)b.className="on";if(dis&&dis(a))b.disabled=true;b.onclick=()=>{st[key]=a.k;render()};el.appendChild(b)})}
-function render(){
- const loc=cur();$("c_loc").innerHTML=LOC.map(l=>`<option value="${l.k}" ${l.k==st.loc?"selected":""}>${LOCS[l.i][L]}</option>`).join("");
- if(!loc.coast&&st.ter=="coast")st.ter="jungle";
- seg("c_terrain",TER,"ter",a=>!loc.coast&&a.k=="coast");seg("c_finish",FIN,"fin");seg("c_core",CORE,"core");
- $("c_base").innerHTML=BASE[L].map(b=>`<span>${b}</span>`).join("");
- const coastOK=loc.coast&&st.ter=="coast",tm=TER.find(x=>x.k==st.ter).m;
- $("c_groups").innerHTML=G.map(g=>`<div class="card"><h4>${g[L]}</h4><div class="opts">`+g.o.map(o=>{const dis=o.coast&&!coastOK;if(dis)st.on[o.k]=false;
-  return `<label class="opt ${dis?"dis":""}"><input type="checkbox" data-k="${o.k}" ${st.on[o.k]?"checked":""} ${dis?"disabled":""}><span>${o[L]}</span><span class="c">${fmt(o.c*1e6*loc.m*tm)}</span></label>`}).join("")+`</div></div>`).join("");
- document.querySelectorAll("#c_groups input").forEach(i=>i.onchange=()=>{st.on[i.dataset.k]=i.checked;calc()});
- outs();calc()}
-function outs(){["villas","area","people","staff","years"].forEach(k=>$("c_o_"+k).textContent=$("c_"+k).value+(k=="area"?(L=="ru"?" м²":" m²"):""))}
-function calc(){
- const loc=cur(),K=loc.m*TER.find(x=>x.k==st.ter).m,fm=FIN.find(x=>x.k==st.fin).m;
- const n=+$("c_villas").value,a=+$("c_area").value,ppl=+$("c_people").value,stf=+$("c_staff").value,yr=+$("c_years").value,ha=Math.max(1,+$("c_ha").value||1);
- const villas=n*a*4000*fm*K,staffH=stf*25*2000*K;
- const base=(1.2e6+0.12e6*n+0.7e6+0.05e6*n+0.8e6+0.5e6+0.9e6+1.2e6+0.2e6*n+0.015e6*ha+0.8e6+(ppl+stf)*yr*3500)*K;
- const core=CORE.find(c=>c.k==st.core).c*1e6*K;let opts=0;G.forEach(g=>g.o.forEach(o=>{if(st.on[o.k])opts+=o.c*1e6*K}));
- const hard=villas+staffH+base+core+opts,soft=hard*.1,cont=(hard+soft)*.05,cost=hard+soft+cont,fee=cost*.2,total=cost+fee,land=[loc.land[0]*1e3*ha,loc.land[1]*1e3*ha],opex=stf*45000*loc.sal+hard*.025;
- $("c_total").textContent=fmt(total);$("c_range").textContent=(L=="ru"?"Вилка: ":"Range: ")+fmt(total*.85)+" – "+fmt(total*1.2);
- $("c_cost").textContent=fmt(cost);$("c_fee").textContent=fmt(fee);$("c_land").textContent=fmt(land[0])+" – "+fmt(land[1]);
- $("c_all").textContent=fmt(total+land[0])+" – "+fmt(total+land[1]);$("c_opex").textContent=fmt(opex);
- const parts=[["villas",villas],["staff",staffH],["base",base],["core",core],["opts",opts],["soft",soft],["cont",cont]].filter(p=>p[1]>0),mx=Math.max(...parts.map(p=>p[1]));
- $("c_bars").innerHTML=parts.map(p=>`<div class="bar"><div class="t"><span>${CATS[L][p[0]]}</span><span>${fmt(p[1])}</span></div><div class="tr"><div class="fl" style="width:${p[1]/mx*100}%"></div></div></div>`).join("");
- $("c_warn").style.display=total<15e6?"block":"none"}
-$("c_loc").onchange=e=>{st.loc=e.target.value;render()};
-["villas","area","people","staff","years"].forEach(k=>$("c_"+k).oninput=()=>{outs();calc()});$("c_ha").oninput=calc;
-$("c_tobrief").onclick=()=>$("brief").scrollIntoView();
-hooks.push(render);
-})();
-
-/* ---------- questionnaire ---------- */
-(function(){
-const S=[
- {ru:"Семья",en:"Family",q:[["people","s","Сколько человек будет жить постоянно?","How many people will live there permanently?",["1–4","5–10","11–20","21–40","Более 40"],["1–4","5–10","11–20","21–40","Over 40"]],["comp","m","Состав семьи","Family composition",["Взрослые","Дети до 12 лет","Подростки","Пожилые родители","Гости и друзья семьи","Деловые партнёры"],["Adults","Children under 12","Teenagers","Elderly parents","Guests and family friends","Business partners"]],["generations","s","Сколько поколений одновременно?","How many generations at once?",["Одно","Два","Три","Четыре"],["One","Two","Three","Four"]],["medneeds","s","Есть ли особые медицинские потребности?","Any special medical needs?",["Нет","Нужен постоянный врач","Нужен специализированный уход","Обсудим лично"],["No","A permanent doctor is needed","Specialised care is needed","Let’s discuss in person"]],["pets","m","Животные","Animals",["Нет","Собаки","Кошки","Лошади","Другие"],["None","Dogs","Cats","Horses","Other"]]]},
- {ru:"Цели",en:"Goals",q:[["goal","m","Главная цель","Main purpose",["Убежище на крайний случай","Постоянная резиденция","Вторая резиденция","Инвестиция в актив","Наследие для следующих поколений"],["A refuge for emergencies","A permanent residence","A second residence","An investment asset","A legacy for future generations"]],["risks","m","От каких рисков защищаться в первую очередь?","Which risks matter most?",["Все сразу","ИИ и цифровой контроль","Война и ядерная угроза","Пандемии","Климат и катастрофы","Беспорядки и преступность","Финансовый кризис","Нехватка еды и воды"],["All of them","AI and digital surveillance","War and nuclear threat","Pandemics","Climate and disasters","Unrest and crime","Financial crisis","Food and water shortages"]],["usage","s","Как часто планируете там жить?","How often do you plan to live there?",["Постоянно","Несколько месяцев в год","Несколько недель в год","Только в случае кризиса"],["Permanently","A few months a year","A few weeks a year","Only in a crisis"]],["arrival","s","За какое время семья должна добраться до ковчега?","How quickly must the family reach the Ark?",["До 12 часов","До 24 часов","До 72 часов","Не критично"],["Within 12 hours","Within 24 hours","Within 72 hours","Not critical"]]]},
- {ru:"Локация",en:"Location",q:[["region","m","Какие регионы рассматриваете?","Which regions are you considering?",["Тасмания","Новая Зеландия","Уругвай","Чили, Патагония","Аргентина","Парагвай","Коста-Рика","Сейшелы","Другой регион","Помогите выбрать"],["Tasmania","New Zealand","Uruguay","Chile, Patagonia","Argentina","Paraguay","Costa Rica","Seychelles","Another region","Help us choose"]],["terrain","s","Тип участка","Type of site",["На берегу, со своей бухтой","В глубине джунглей","В горной долине","Равнина, ферма","Без разницы"],["On the coast, with a private bay","Deep in the jungle","In a mountain valley","Flat farmland","No preference"]],["climate","s","Климат","Climate",["Тропический","Умеренный","Прохладный","Не важно"],["Tropical","Temperate","Cool","Doesn’t matter"]],["area","s","Площадь участка","Site area",["До 10 га","10–30 га","30–100 га","Более 100 га","Посоветуйте"],["Up to 10 ha","10–30 ha","30–100 ha","Over 100 ha","Advise us"]],["airport","s","Удалённость от международного аэропорта","Distance from an international airport",["До 1 часа","1–3 часа","Более 3 часов","Не важно"],["Under 1 hour","1–3 hours","Over 3 hours","Doesn’t matter"]],["sites","s","Сколько объектов?","How many sites?",["Один","Два в разных полушариях","Обсудим"],["One","Two in different hemispheres","Let’s discuss"]],["land","s","Есть ли уже земля?","Do you already own land?",["Да","Нет","Рассматриваем варианты"],["Yes","No","Considering options"]]]},
- {ru:"Жильё",en:"Homes",q:[["homes","s","Сколько домов нужно?","How many homes?",["1","2–3","4–6","7–12","Более 12"],["1","2–3","4–6","7–12","More than 12"]],["mainhouse","s","Площадь главной резиденции","Main residence size",["До 300 м²","300–600 м²","600–1 000 м²","Более 1 000 м²"],["Up to 300 m²","300–600 m²","600–1,000 m²","Over 1,000 m²"]],["guest","s","Гостевые дома","Guest houses",["Не нужны","1–2","3 и больше"],["Not needed","1–2","3 or more"]],["style","s","Архитектурный стиль","Architectural style",["Тропический модернизм","Минимализм","Классика","Эко-архитектура","На усмотрение архитектора"],["Tropical modernism","Minimalism","Classic","Eco-architecture","Architect’s choice"]],["finish","s","Уровень отделки","Finish level",["Премиум","Ультралюкс"],["Premium","Ultra-luxury"]],["core","s","Ark Core: библиотека и хранилища","Ark Core: library and vaults",["Не нужен","Заглублённый блок","Библиотека и уровни в скале"],["Not needed","A sunken block","Library and levels in rock"]]]},
- {ru:"Персонал",en:"Staff",q:[["staffn","s","Численность персонала","Number of staff",["До 10","10–30","30–60","Более 60","Посоветуйте"],["Up to 10","10–30","30–60","Over 60","Advise us"]],["roles","m","Какие специалисты нужны?","Which specialists?",["Врач","Медсестра","Агроном","Инженер-энергетик","Охрана","Повар","Учитель","Няня","Механик","Пилот","Капитан","Управляющий"],["Doctor","Nurse","Agronomist","Energy engineer","Security","Chef","Teacher","Nanny","Mechanic","Pilot","Captain","Estate manager"]],["staffhome","s","Где живёт персонал?","Where do staff live?",["На территории","Рядом с поселением","Смешанно"],["On site","Near the settlement","Mixed"]],["hiring","s","Подбор персонала","Staff recruitment",["Подбираете вы","Свои люди","Смешанно"],["You recruit","Our own people","Mixed"]]]},
- {ru:"Автономия",en:"Autonomy",q:[["years","s","На сколько лет полной автономии рассчитать запасы?","How many years of full autonomy?",["1 год","3 года","5 лет","10 лет и более"],["1 year","3 years","5 years","10 years or more"]],["energy","m","Источники энергии","Energy sources",["Солнце и накопители","МикроГЭС","Ветер","Генераторы","Все возможные"],["Solar and storage","Micro-hydro","Wind","Generators","All available"]],["water","m","Вода","Water",["Родник или скважина","Сбор дождевой воды","Опреснитель","Все источники"],["Spring or well","Rainwater harvesting","Desalination","All sources"]],["food","m","Своё производство еды","Own food production",["Огород","Теплицы","Фруктовый сад","Козы и куры","Крупный скот","Рыбный пруд","Пасека","Завоз плодородного грунта"],["Vegetable garden","Greenhouses","Orchard","Goats and chickens","Cattle","Fish pond","Bees","Imported fertile soil"]],["store","m","Что хранить на складе?","What should the store hold?",["Семена","Лекарства","Продукты долгого хранения","Топливо","Запчасти и инструменты","Биобанк семьи","Вино и деликатесы"],["Seeds","Medicines","Long-life food","Fuel","Spare parts and tools","Family biobank","Wine and delicacies"]]]},
- {ru:"Безопасность",en:"Security",q:[["seclevel","s","Уровень безопасности","Security level",["Базовый","Усиленный","Максимальный"],["Basic","Enhanced","Maximum"]],["shelter","s","Укрытие в скале с фильтровентиляцией","Rock shelter with filtered air",["Да","Нет","Обсудим"],["Yes","No","Let’s discuss"]],["comms","s","Связь","Communications",["Полная тишина","Аварийная связь по протоколу","Обычная связь с возможностью отключения"],["Total silence","Emergency comms by protocol","Normal comms that can be switched off"]],["cameras","s","Видеонаблюдение","Video surveillance",["Нет","Только по периметру","Да"],["None","Perimeter only","Yes"]],["vault","s","Хранилище ценностей и документов","Vault for valuables and documents",["Да","Нет"],["Yes","No"]]]},
- {ru:"Транспорт",en:"Transport",q:[["transport","m","Что нужно?","What do you need?",["Вертолётная площадка и ангар","Причал для яхты","Площадка для гидросамолёта","Взлётная полоса для малой авиации","Внедорожники","Электробагги","Лодки и тендеры","Спецтехника"],["Helipad and hangar","Yacht pier","Seaplane landing","Airstrip for light aircraft","4x4 vehicles","Electric buggies","Boats and tenders","Machinery"]],["yacht","s","Размер яхты","Yacht size",["Нет яхты","До 30 м","30–60 м","Более 60 м"],["No yacht","Up to 30 m","30–60 m","Over 60 m"]]]},
- {ru:"Медицина",en:"Medicine",q:[["medlevel","s","Уровень медицины","Medical level",["Медпункт","Клиника с операционной","Расширенная клиника"],["Medical station","Clinic with operating room","Extended clinic"]],["medplus","m","Дополнительно","Additionally",["Лаборатория","Рентген и УЗИ","Стоматология","Родильный блок","Реабилитация","Аптека на годы вперёд"],["Laboratory","X-ray and ultrasound","Dental surgery","Maternity unit","Rehabilitation","Pharmacy for years ahead"]]]},
- {ru:"Жизнь",en:"Life",q:[["life","m","Что должно быть в поселении?","What should the settlement have?",["Школа","Библиотека","Спортзал","Бассейн","Спа","Винный погреб","Обсерватория","Мастерские","Конюшня","Теннисный корт","Место для медитации","Общий павильон для ужинов"],["School","Library","Gym","Swimming pool","Spa","Wine cellar","Observatory","Workshops","Stables","Tennis court","Meditation space","Shared dining pavilion"]],["screens","s","Экраны и интернет в домах","Screens and internet in the homes",["Полностью без экранов","Только офлайн-медиатека","Как обычно"],["No screens at all","Offline media library only","As usual"]]]},
- {ru:"Сроки и бюджет",en:"Timing and budget",q:[["start","s","Когда начать?","When to start?",["Немедленно","В течение 6 месяцев","В течение года","Пока изучаем"],["Immediately","Within 6 months","Within a year","Still exploring"]],["ready","s","Желаемый срок готовности","Desired completion",["До 2 лет","2–3 года","3–5 лет","Не критично"],["Within 2 years","2–3 years","3–5 years","Not critical"]],["budget","s","Бюджет без земли","Budget excluding land",["$15–30 млн","$30–50 млн","$50–100 млн","Более $100 млн","Обсудим"],["$15–30m","$30–50m","$50–100m","Over $100m","Let’s discuss"]],["funding","s","Финансирование","Funding",["Собственные средства","С партнёрами","Через семейный офис или фонд"],["Own funds","With partners","Via a family office or fund"]]]},
- {ru:"Связь с вами",en:"Contact",q:[["via","s","Через кого вести общение?","Who should we work with?",["Лично со мной","Семейный офис","Юрист","Помощник"],["With me personally","Family office","Lawyer","Assistant"]],["nda","s","NDA до начала работы","NDA before starting",["Обязательно","По желанию"],["Mandatory","Optional"]],["meet","s","Формат первой встречи","First meeting format",["Личная встреча","Видеозвонок","Через доверенное лицо"],["In person","Video call","Through a trusted representative"]],["name","t","Имя или кодовое имя","Name or code name"],["contact","t","Контакт для связи","Contact details"],["comment","a","Что ещё нам важно знать?","Anything else we should know?"]]}];
-const T={ru:{step:"Раздел",of:"из",answered:"отвечено",next:"Далее",back:"Назад",finish:"К итогам",other:"Свой вариант…",multi:"Можно выбрать несколько",sumT:"Ваши ответы",copy:"Скопировать ответы",dl:"Скачать файл",copied:"Скопировано. Отправьте ответы нам удобным способом.",fail:"Не удалось скопировать. Выделите текст вручную.",edit:"Изменить",empty:"Нет ответа",summary:"Итоги",saved:"Файл сохранён",reset:"Начать заново",title:"Анкета The Ark"},
- en:{step:"Section",of:"of",answered:"answered",next:"Next",back:"Back",finish:"To summary",other:"Your own option…",multi:"You can choose several",sumT:"Your answers",copy:"Copy answers",dl:"Download file",copied:"Copied. Send the answers to us in whatever way suits you.",fail:"Could not copy. Select the text manually.",edit:"Edit",empty:"No answer",summary:"Summary",saved:"File saved",reset:"Start over",title:"The Ark questionnaire"}};
-let cur=0,A={};try{A=JSON.parse(localStorage.getItem("ark_brief_a")||"{}")}catch(e){}
-const save=()=>{try{localStorage.setItem("ark_brief_a",JSON.stringify(A))}catch(e){}};
-const allQ=S.flatMap(s=>s.q);
-const isAns=q=>{const v=A[q[0]];return !!v&&(((v.c||[]).length>0)||!!v.o||!!v.t)};
-let downloads=null;(async()=>{try{if(window.claude&&claude.use)downloads=await claude.use("downloads")}catch(e){}if(cur===S.length)render()})();
-function go(i){cur=i;render();$("brief").scrollIntoView()}
-function render(){const t=T[L],n=allQ.filter(isAns).length;
- $("b_pt").textContent=cur<S.length?`${t.step} ${cur+1} ${t.of} ${S.length}: ${S[cur][L]}`:t.summary;
- $("b_pp").textContent=`${n} / ${allQ.length} ${t.answered}`;$("b_pf").style.width=(n/allQ.length*100)+"%";
- $("b_tabs").innerHTML=S.map((s,i)=>`<button class="${i==cur?"on":""} ${s.q.every(isAns)?"done":""}" data-i="${i}">${i+1}. ${s[L]}</button>`).join("")+`<button class="${cur==S.length?"on":""}" data-i="${S.length}">${t.summary}</button>`;
- $("b_tabs").querySelectorAll("button").forEach(b=>b.onclick=()=>go(+b.dataset.i));
- cur<S.length?sec(t):sum(t)}
-function sec(t){const s=S[cur];let h="";
- s.q.forEach(q=>{const [id,ty,ru,en,oR,oE]=q,v=A[id]||{};h+=`<div class="q"><p class="ql">${L=="ru"?ru:en}</p>`;
-  if(ty=="s"||ty=="m"){h+=ty=="m"?`<p class="qh">${t.multi}</p>`:`<div style="height:8px"></div>`;h+=`<div class="ch">`+(L=="ru"?oR:oE).map((o,i)=>`<button data-q="${id}" data-i="${i}" class="${(v.c||[]).includes(i)?"on":""}">${o}</button>`).join("")+`</div><input type="text" data-o="${id}" placeholder="${t.other}" value="${esc(v.o||"")}">`}
-  else if(ty=="t")h+=`<input type="text" data-x="${id}" value="${esc(v.t||"")}">`;else h+=`<textarea data-x="${id}">${esc(v.t||"")}</textarea>`;h+=`</div>`});
- h+=`<div class="nav2">${cur>0?`<button class="btn ghost" id="b_bk">${t.back}</button>`:"<span></span>"}<button class="btn" id="b_nx">${cur==S.length-1?t.finish:t.next}</button></div>`;
- $("b_main").innerHTML=h;
- $("b_main").querySelectorAll(".ch button").forEach(b=>b.onclick=()=>{const id=b.dataset.q,i=+b.dataset.i,q=allQ.find(x=>x[0]==id);A[id]=A[id]||{};A[id].c=A[id].c||[];
-  A[id].c=q[1]=="s"?(A[id].c.includes(i)?[]:[i]):(A[id].c.includes(i)?A[id].c.filter(x=>x!=i):[...A[id].c,i]);
-  b.parentNode.querySelectorAll("button").forEach(x=>x.className=A[id].c.includes(+x.dataset.i)?"on":"");save();upd()});
- $("b_main").querySelectorAll("[data-o]").forEach(e=>e.oninput=()=>{const id=e.dataset.o;A[id]=A[id]||{};A[id].o=e.value;save();upd()});
- $("b_main").querySelectorAll("[data-x]").forEach(e=>e.oninput=()=>{A[e.dataset.x]={t:e.value};save();upd()});
- if($("b_bk"))$("b_bk").onclick=()=>go(cur-1);$("b_nx").onclick=()=>go(cur+1)}
-function upd(){const t=T[L],n=allQ.filter(isAns).length;$("b_pp").textContent=`${n} / ${allQ.length} ${t.answered}`;$("b_pf").style.width=(n/allQ.length*100)+"%";
- $("b_tabs").querySelectorAll("button").forEach((b,i)=>{if(i<S.length)b.classList.toggle("done",S[i].q.every(isAns))})}
-function ans(q){const [id,ty,,, oR,oE]=q,v=A[id];if(!isAns(q))return null;if(ty=="t"||ty=="a")return v.t;const op=L=="ru"?oR:oE;return [...(v.c||[]).map(i=>op[i]),v.o].filter(Boolean).join(", ")}
-function plain(){const t=T[L];let o=t.title+"\n\n";S.forEach(s=>{o+=s[L].toUpperCase()+"\n";s.q.forEach(q=>o+=`${L=="ru"?q[2]:q[3]}: ${ans(q)||t.empty}\n`);o+="\n"});return o}
-function sum(t){let h="";S.forEach((s,i)=>{h+=`<div class="q"><p class="ql">${s[L]} <button class="btn ghost" style="padding:4px 10px;font-size:13px;float:right" data-e="${i}">${t.edit}</button></p>`+s.q.map(q=>`<div style="margin-bottom:8px"><p class="qh" style="margin:0">${L=="ru"?q[2]:q[3]}</p><p>${ans(q)?esc(ans(q)):`<span class="mu">${t.empty}</span>`}</p></div>`).join("")+`</div>`});
- h+=`<div class="nav2"><button class="btn ghost" id="b_rs">${t.reset}</button><span style="display:flex;gap:10px;flex-wrap:wrap">${downloads?`<button class="btn ghost" id="b_dl">${t.dl}</button>`:""}<button class="btn" id="b_cp">${t.copy}</button></span></div><p class="msg" id="b_msg"></p>`;
- $("b_main").innerHTML=h;$("b_main").querySelectorAll("[data-e]").forEach(b=>b.onclick=()=>go(+b.dataset.e));
- $("b_cp").onclick=async()=>{try{await navigator.clipboard.writeText(plain());$("b_msg").textContent=t.copied}catch(e){$("b_msg").textContent=t.fail}};
- if($("b_dl"))$("b_dl").onclick=async()=>{try{await downloads.save({filename:L=="ru"?"Анкета_The_Ark.txt":"The_Ark_questionnaire.txt",data:plain()});$("b_msg").textContent=t.saved}catch(e){}};
- $("b_rs").onclick=()=>{A={};save();go(0)}}
-hooks.push(render);
-})();
-setLang(L);
-</script>
+ <div class="wrap foot"><span>The Ark</span> <span><span class="ru">Проекты от $15 млн</span><span class="en">Projects from $15m</span></span></div>
+</div>
+<script src="assets/common.js"></script>
 </body>
 </html>

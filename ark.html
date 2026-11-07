@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ark · Ковчег</title>
+<meta name="robots" content="noindex">
+<meta property="og:title" content="The Ark · How it works">
+<meta property="og:image" content="https://vkruppp.github.io/the-ark/img/core_entry.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E1417'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' fill='%23C29A62' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Rubik:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:1px solid #C9BFAE}
+.pillars div{padding:28px 28px 28px 0;border-bottom:1px solid #C9BFAE}
+.pillars b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:34px;margin-bottom:6px}
+.pillars p{color:var(--ml);font-size:15px}
+@media(max-width:800px){.pillars{grid-template-columns:1fr}}
+.wideimg{margin-top:56px;border-radius:18px;overflow:hidden}
+.gal{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:56px}
+.gal figure{border-radius:16px;overflow:hidden;position:relative;grid-column:span 6}
+.gal figure.w8{grid-column:span 8}.gal figure.w4{grid-column:span 4}
+@media(max-width:800px){.gal figure,.gal figure.w8,.gal figure.w4{grid-column:span 12}}
+.gal img{width:100%;height:100%;min-height:300px;object-fit:cover;transition:transform 1.2s}
+.gal figure:hover img{transform:scale(1.04)}
+.gal figcaption{position:absolute;left:0;right:0;bottom:0;padding:60px 22px 18px;background:linear-gradient(0deg,rgba(14,20,23,.92),rgba(14,20,23,0))}
+.gal figcaption b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:28px;color:var(--tx)}
+.gal figcaption span{color:#C9CFCB;font-size:14px}
+.split{display:grid;grid-template-columns:1.2fr 1fr;gap:56px;align-items:center}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.split img{border-radius:16px}
+.zone div{padding:16px 0;border-bottom:1px solid var(--line)}
+.zone b{display:block;font-weight:500;color:var(--br);margin-bottom:4px}
+.zone p{color:var(--mu)}
+.pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.pill{border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:15px}
+.pill:before{content:"✓ ";color:var(--br)}
+details.opt{background:var(--card);border-radius:16px;margin-bottom:12px}
+details.opt summary{cursor:pointer;padding:22px 26px;font-size:19px;font-weight:500;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.opt summary::-webkit-details-marker{display:none}
+details.opt summary:after{content:"+";color:var(--br);font-size:26px;line-height:1;transition:transform .3s}
+details.opt[open] summary:after{transform:rotate(45deg)}
+details.opt ul{padding:0 26px 24px 46px;color:var(--mu);columns:2;column-gap:40px}
+@media(max-width:600px){details.opt ul{columns:1}}
+details.opt li{padding:5px 0;break-inside:avoid}
+.mapbox{background:var(--bg);border-radius:18px;padding:26px;margin-top:50px}
+.map{position:relative}
+.map img{width:100%}
+.pin{position:absolute;width:32px;height:32px;margin:-16px 0 0 -16px;border-radius:50%;background:var(--br);color:var(--bg);font:600 14px Rubik,Arial,sans-serif;display:flex;align-items:center;justify-content:center;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.pin:after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid var(--br);animation:pulse 2.6s infinite;opacity:0}
+.pin.on{background:var(--tx);transform:scale(1.15)}
+@keyframes pulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.8);opacity:0}}
+.locs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+@media(max-width:900px){.locs{grid-template-columns:1fr 1fr}}
+.loc{background:var(--card);color:var(--tx);border-radius:12px;padding:14px 16px;cursor:pointer;border:1px solid transparent;transition:border-color .2s}
+.loc.on{border-color:var(--br)}
+.loc b{font-weight:500}.loc .sc{color:var(--br);font-size:13px}
+.prof{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:800px){.prof{grid-template-columns:1fr}}
+.prof .card{background:var(--card);color:var(--tx)}
+.prof h3{font-family:'Cormorant Garamond',Georgia,serif;font-size:44px;font-weight:500;margin:0}
+.light .prof .card p.v,.prof .v{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-size:24px;margin:4px 0 14px;color:var(--tx)}
+.prof ul{padding-left:20px}.prof li{padding:3px 0;color:var(--tx)}
+.prof .lab{font-weight:500;margin:10px 0 4px}
+.bar{font-size:13px;color:var(--mu);margin-top:9px}
+.bar .t{display:flex;justify-content:space-between;margin-bottom:3px}
+.bar .tr{height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.bar .fl{height:100%;background:var(--br);transition:width .8s}
+.tw{overflow-x:auto;margin-top:40px}
+table{width:100%;border-collapse:collapse;font-size:15px;color:var(--tl)}
+th,td{text-align:left;padding:12px 8px;border-bottom:1px solid #C9BFAE}
+th{color:var(--brl);font-weight:500;font-size:13px}
+</style>
+</head>
+<body class="lru">
+<nav id="nav"><div class="wrap in">
+ <a class="logo" href="index.html">THE ARK</a>
+ <div class="links"><a href="philosophy.html"><span class="ru">Философия</span><span class="en">Philosophy</span></a><a href="ark.html" class="on"><span class="ru">Ковчег</span><span class="en">The Ark</span></a><a href="start.html"><span class="ru">Ваш проект</span><span class="en">Your project</span></a></div>
+ <div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div>
+</div></nav>
+
+<header class="phero"><img src="img/aerial.jpg" alt="">
+ <div class="wrap"><p class="eb">02 · <span class="ru">Ковчег</span><span class="en">The Ark</span></p>
+ <h1><span class="ru">Не бункер.<br>Место для жизни.</span><span class="en">Not a bunker.<br>A place to live.</span></h1>
+ <p class="s"><span class="ru">Частное поселение для одной большой семьи или нескольких семей: спрятано в природе, полностью автономно и готово принять своих жителей в любой момент.</span><span class="en">A private settlement for one extended family or several families: hidden in nature, fully autonomous and ready to receive its residents at any moment.</span></p></div>
+</header>
+
+<section class="light">
+ <div class="wrap">
+  <p class="eb rv"><span class="ru">Шесть принципов</span><span class="en">Six principles</span></p>
+  <h2 class="rv"><span class="ru">Что делает ковчег ковчегом</span><span class="en">What makes an Ark an Ark</span></h2>
+  <div class="pillars">
+   <div class="rv"><b><span class="ru">Автономия</span><span class="en">Autonomy</span></b><p><span class="ru">Своя еда, вода и энергия на годы вперёд.</span><span class="en">Its own food, water and energy for years ahead.</span></p></div>
+   <div class="rv d1"><b><span class="ru">Тишина</span><span class="en">Silence</span></b><p><span class="ru">Без интернета и камер. Аварийная связь только по протоколу.</span><span class="en">No internet, no cameras. Emergency comms by protocol only.</span></p></div>
+   <div class="rv d2"><b><span class="ru">Медицина</span><span class="en">Medicine</span></b><p><span class="ru">От медпункта до клиники с операционной и врачом на месте.</span><span class="en">From a medical station to a clinic with an operating room and resident doctor.</span></p></div>
+   <div class="rv"><b><span class="ru">Знание</span><span class="en">Knowledge</span></b><p><span class="ru">Библиотека бумажных книг, архив и семенной фонд в скале.</span><span class="en">A library of printed books, an archive and a seed vault in the rock.</span></p></div>
+   <div class="rv d1"><b><span class="ru">Сообщество</span><span class="en">Community</span></b><p><span class="ru">Общий стол, школа для детей, свой круг людей.</span><span class="en">A shared table, a school, a trusted circle.</span></p></div>
+   <div class="rv d2"><b><span class="ru">Под ключ</span><span class="en">Turnkey</span></b><p><span class="ru">От выбора земли до запасов, персонала и регламентов.</span><span class="en">From land to provisions, staff and protocols.</span></p></div>
+  </div>
+  <div class="wideimg rv"><img src="img/masterplan.jpg" alt="" loading="lazy"></div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <p class="eb rv"><span class="ru">Архитектура</span><span class="en">Architecture</span></p>
+  <h2 class="rv"><span class="ru">Каждое здание спрятано в природе</span><span class="en">Every building is hidden in nature</span></h2>
+  <div class="gal">
+   <figure class="w8 rv"><img src="img/core_entry.jpg" alt="" loading="lazy"><figcaption><b>Ark Core</b><span><span class="ru">Библиотека, вырезанная в скале у водопада</span><span class="en">A library carved into the rock by the waterfall</span></span></figcaption></figure>
+   <figure class="w4 rv d1"><img src="img/library.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Читальный зал</span><span class="en">Reading hall</span></b><span><span class="ru">100 000 книг и ни одного сервера</span><span class="en">100,000 books and not one server</span></span></figcaption></figure>
+   <figure class="rv"><img src="img/villa.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Виллы</span><span class="en">Villas</span></b><span><span class="ru">Павильоны на сваях в кронах деревьев</span><span class="en">Pavilions on stilts in the canopy</span></span></figcaption></figure>
+   <figure class="rv d1"><img src="img/villa_interior.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Интерьер</span><span class="en">Interior</span></b><span><span class="ru">Книги, игры и разговоры вместо экранов</span><span class="en">Books, games and conversation instead of screens</span></span></figcaption></figure>
+   <figure class="w4 rv"><img src="img/vault.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Хранилище</span><span class="en">Vault</span></b><span><span class="ru">Семена и продовольствие на годы</span><span class="en">Seeds and food for years</span></span></figcaption></figure>
+   <figure class="w8 rv d1"><img src="img/section.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Три уровня в граните</span><span class="en">Three levels in the granite</span></b><span><span class="ru">Архив, семенной фонд, запасы</span><span class="en">Archive, seed vault, reserves</span></span></figcaption></figure>
+   <figure class="rv"><img src="img/garden.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Еда</span><span class="en">Food</span></b><span><span class="ru">Террасы, сады, теплицы, животноводство</span><span class="en">Terraces, orchards, greenhouses, livestock</span></span></figcaption></figure>
+   <figure class="rv d1"><img src="img/energy.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Вода и энергия</span><span class="en">Water and energy</span></b><span><span class="ru">МикроГЭС, солнце, очистка воды</span><span class="en">Micro-hydro, solar, water purification</span></span></figcaption></figure>
+   <figure class="w4 rv"><img src="img/clinic.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Клиника</span><span class="en">Clinic</span></b><span><span class="ru">Операционная и врач на месте</span><span class="en">Operating room and resident doctor</span></span></figcaption></figure>
+   <figure class="w8 rv d1"><img src="img/dinner.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Жизнь</span><span class="en">Life</span></b><span><span class="ru">Общий стол и вечера у водопада</span><span class="en">A shared table and evenings by the waterfall</span></span></figcaption></figure>
+  </div>
+ </div>
+</section>
+
+<section style="background:var(--bg2)">
+ <div class="wrap split">
+  <img class="rv" src="img/diagram.jpg" alt="" loading="lazy">
+  <div>
+   <p class="eb rv"><span class="ru">Защита</span><span class="en">Protection</span></p>
+   <h2 class="rv"><span class="ru">Три контура</span><span class="en">Three rings</span></h2>
+   <div class="zone">
+    <div class="rv"><b><span class="ru">Периметр без сигнала</span><span class="en">Signal-free perimeter</span></b><p><span class="ru">Удалённость, экранирование и контроль эфира в рамках закона страны размещения.</span><span class="en">Remoteness, shielding and spectrum control within the law of the host country.</span></p></div>
+    <div class="rv d1"><b><span class="ru">Автономия</span><span class="en">Autonomy</span></b><p><span class="ru">Еда, вода и энергия производятся внутри контура.</span><span class="en">Food, water and energy produced inside the perimeter.</span></p></div>
+    <div class="rv d2"><b><span class="ru">Ядро</span><span class="en">Core</span></b><p><span class="ru">Библиотека, архив, семенной фонд и укрытие в скале.</span><span class="en">Library, archive, seed vault and shelter in the rock.</span></p></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <p class="eb rv"><span class="ru">Конфигурация</span><span class="en">Configuration</span></p>
+  <h2 class="rv"><span class="ru">База плюс опции на ваш выбор</span><span class="en">A core package plus the options you choose</span></h2>
+  <p class="lead rv"><span class="ru">Каждый ковчег собирается под заказчика: у воды, в джунглях или в горах. Базовая комплектация есть всегда.</span><span class="en">Every Ark is built around its client: by the water, in the jungle or in the mountains. The core package is always included.</span></p>
+  <div class="pills rv">
+   <span class="pill"><span class="ru">Энергия</span><span class="en">Energy</span></span><span class="pill"><span class="ru">Вода</span><span class="en">Water</span></span><span class="pill"><span class="ru">Огород и теплица</span><span class="en">Garden and greenhouse</span></span><span class="pill"><span class="ru">Медпункт</span><span class="en">Medical station</span></span><span class="pill"><span class="ru">Дом семьи</span><span class="en">Family home</span></span><span class="pill"><span class="ru">Дом персонала</span><span class="en">Staff housing</span></span><span class="pill"><span class="ru">Охрана</span><span class="en">Security</span></span><span class="pill"><span class="ru">Тихая зона</span><span class="en">Silent zone</span></span>
+  </div>
+  <div class="gal">
+   <figure class="rv"><img src="img/helipad.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Вертолётная площадка</span><span class="en">Helipad</span></b><span><span class="ru">С ангаром и запасом авиатоплива</span><span class="en">With a hangar and aviation fuel</span></span></figcaption></figure>
+   <figure class="rv d1"><img src="img/pier.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Причал для яхты</span><span class="en">Yacht pier</span></b><span><span class="ru">Глубоководный, с эллингом в скалах</span><span class="en">Deep-water, with a boathouse in the rocks</span></span></figcaption></figure>
+   <figure class="rv"><img src="img/store.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Стратегический склад</span><span class="en">Strategic store</span></b><span><span class="ru">Семена, аптека, биобанк, запчасти</span><span class="en">Seeds, pharmacy, biobank, spare parts</span></span></figcaption></figure>
+   <figure class="rv d1"><img src="img/shelter.jpg" alt="" loading="lazy"><figcaption><b><span class="ru">Укрытие в скале</span><span class="en">Rock shelter</span></b><span><span class="ru">Фильтровентиляция, спальни, кухня, вода</span><span class="en">Filtered air, bedrooms, kitchen, water</span></span></figcaption></figure>
+  </div>
+  <div class="mt" id="optlist"></div>
+ </div>
+</section>
+
+<section class="light" id="locations">
+ <div class="wrap">
+  <p class="eb rv"><span class="ru">Где строить</span><span class="en">Where to build</span></p>
+  <h2 class="rv"><span class="ru">Восемь рекомендованных территорий</span><span class="en">Eight recommended territories</span></h2>
+  <p class="lead rv"><span class="ru">Отбор по научным данным: устойчивость к коллапсу, модель ядерной зимы, индекс миролюбия, право иностранцев на землю. Нажмите на точку на карте.</span><span class="en">Selected using research: resilience to collapse, the nuclear-winter model, the Global Peace Index and foreign land rights. Tap a pin on the map.</span></p>
+  <div class="mapbox rv"><div class="map" id="map"><img src="img/worldmap.png" alt=""></div>
+   <div class="locs" id="locs"></div>
+   <div class="prof" id="prof"></div>
+  </div>
+  <div class="tw rv"><table id="matrix"></table></div>
+  <p class="src"><span class="ru">Оценки по шкале 1–10 — наше экспертное суждение на основе King &amp; Jones 2021, Xia et al. 2022, GPI 2026, ND-GAIN 2023 и законодательства стран (ноябрь 2026).</span><span class="en">Scores on a 1–10 scale are our expert judgement based on King &amp; Jones 2021, Xia et al. 2022, GPI 2026, ND-GAIN 2023 and national legislation (November 2026).</span></p>
+ </div>
+</section>
+
+<section>
+ <div class="wrap">
+  <p class="eb rv"><span class="ru">Как мы работаем</span><span class="en">How we work</span></p>
+  <h2 class="rv"><span class="ru">Себестоимость плюс 20%</span><span class="en">Cost plus 20%</span></h2>
+  <div class="g3 mt">
+   <div class="card rv"><p class="num">100%</p><h3><span class="ru">Честная себестоимость</span><span class="en">Honest cost</span></h3><p><span class="ru">Открытая смета. Строим как для себя и не раздуваем бюджет.</span><span class="en">An open budget. We build as if for ourselves and never inflate it.</span></p></div>
+   <div class="card rv d1"><p class="num">+20%</p><h3><span class="ru">Вознаграждение исполнителя</span><span class="en">Contractor’s fee</span></h3><p><span class="ru">Фиксированный процент от каждого потраченного доллара.</span><span class="en">A fixed share of every dollar spent.</span></p></div>
+   <div class="card rv d2"><p class="num"><span class="ru">от $15 млн</span><span class="en">$15m+</span></p><h3><span class="ru">Минимальный проект</span><span class="en">Minimum project</span></h3><p><span class="ru">Ограниченное число заказов в год.</span><span class="en">A limited number of commissions per year.</span></p></div>
+  </div>
+  <div class="g4 mt">
+   <div class="card rv"><h3><span class="ru">Опыт</span><span class="en">Experience</span></h3><p><span class="ru">Готовые кейсы строительства поселений в Украине.</span><span class="en">Completed settlement projects in Ukraine.</span></p></div>
+   <div class="card rv d1"><h3><span class="ru">Скорость</span><span class="en">Speed</span></h3><p><span class="ru">От анкеты до заселения без лишних этапов.</span><span class="en">From questionnaire to move-in with no wasted stages.</span></p></div>
+   <div class="card rv d2"><h3><span class="ru">Связи</span><span class="en">Reach</span></h3><p><span class="ru">Административные возможности и контакты по всему миру.</span><span class="en">Administrative capabilities and connections worldwide.</span></p></div>
+   <div class="card rv d3"><h3><span class="ru">Ответственность</span><span class="en">Responsibility</span></h3><p><span class="ru">Работаем как для себя и отвечаем за каждый доллар.</span><span class="en">We build as if for ourselves and answer for every dollar.</span></p></div>
+  </div>
+ </div>
+</section>
+
+<a class="next" href="start.html"><img src="img/arrival.jpg" alt=""><div class="wrap"><p class="eb">03</p><h2><span class="ru">Ваш проект: анкета и расчёт</span><span class="en">Your project: questionnaire and estimate</span></h2><p class="arrow"><span class="ru">Начать →</span><span class="en">Start →</span></p></div></a>
+<footer class="footer"><div class="wrap"><span>THE ARK · <span class="ru">только по приглашению</span><span class="en">by invitation only</span></span><span><a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a> · <a href="philosophy.html"><span class="ru">Философия</span><span class="en">Philosophy</span></a> · <a href="start.html"><span class="ru">Ваш проект</span><span class="en">Your project</span></a></span></div></footer>
+<script src="assets/common.js"></script>
+<script src="assets/data.js"></script>
+<script>
+let sel = 7;
+function renderOpts(){
+ const G=[...OPTG.map(g=>({t:g,i:g.o.map(o=>[o.ru,o.en])}))];
+ $("optlist").innerHTML=OPTG.map((g,k)=>`<details class="opt" ${k==0?"open":""}><summary>${g[L]}</summary><ul>${g.o.map(o=>`<li>${o[L]}</li>`).join("")}</ul></details>`).join("");
+}
+function renderLocs(){
+ const lx=L=="ru"?0:1, map=$("map");
+ map.querySelectorAll(".pin").forEach(p=>p.remove());
+ LOCS.forEach((l,i)=>{const b=document.createElement("button");b.className="pin"+(i==sel?" on":"");b.textContent=i+1;b.title=l[L];b.setAttribute("aria-label",l[L]);
+  b.style.left=((l.c[0]+180)/360*100)+"%";b.style.top=((78-l.c[1])/134*100)+"%";b.onclick=()=>{sel=i;renderLocs()};map.appendChild(b)});
+ $("locs").innerHTML=LOCS.map((l,i)=>`<div class="loc ${i==sel?"on":""}" data-i="${i}"><b>${i+1}. ${l[L]}</b><div class="sc">${l.s.reduce((a,b)=>a+b)}/50</div></div>`).join("");
+ $("locs").querySelectorAll(".loc").forEach(d=>d.onclick=()=>{sel=+d.dataset.i;renderLocs()});
+ const l=LOCS[sel], names=L=="ru"?["Безопасность и изоляция","Климат и риски","Еда и вода","Доступ для иностранцев","Комфорт"]:["Safety and isolation","Climate and hazards","Food and water","Foreign access","Comfort"];
+ $("prof").innerHTML=`<div class="card"><h3>${l[L]}</h3><p class="v">${l.v[lx]}</p><p class="lab" style="color:var(--br)">${L=="ru"?"Почему подходит":"Why it fits"}</p><ul>${l.p.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul></div>
+ <div class="card"><p class="lab" style="color:var(--em);margin-top:0">${L=="ru"?"Риски":"Risks"}</p><ul>${l.r.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul><div style="margin-top:16px">${names.map((n,k)=>`<div class="bar"><div class="t"><span>${n}</span><span>${l.s[k]}/10</span></div><div class="tr"><div class="fl" style="width:${l.s[k]*10}%"></div></div></div>`).join("")}</div></div>`;
+ const cols=[L=="ru"?"Локация":"Location",...names,L=="ru"?"Итого":"Total"];
+ $("matrix").innerHTML=`<tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr>`+LOCS.map(l=>`<tr><td><b>${l[L]}</b></td>${l.s.map(v=>`<td>${v}</td>`).join("")}<td><b>${l.s.reduce((a,b)=>a+b)}</b>/50</td></tr>`).join("");
+}
+langHooks.push(renderOpts,renderLocs);
+</script>
+</body>
+</html>
