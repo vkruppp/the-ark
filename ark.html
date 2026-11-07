@@ -76,7 +76,7 @@ th{color:var(--brl);font-weight:500;font-size:13px}
 <nav id="nav"><div class="wrap in">
  <a class="logo" href="index.html">THE ARK</a>
  <div class="links"><a href="philosophy.html"><span class="ru">Философия</span><span class="en">Philosophy</span></a><a href="ark.html" class="on"><span class="ru">Ковчег</span><span class="en">The Ark</span></a><a href="start.html"><span class="ru">Ваш проект</span><span class="en">Your project</span></a></div>
- <div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div>
+ <select class="lang" id="langsel" aria-label="Language"></select>
 </div></nav>
 
 <header class="phero"><img src="img/aerial.jpg" alt="">
@@ -158,7 +158,7 @@ th{color:var(--brl);font-weight:500;font-size:13px}
   <p class="eb rv"><span class="ru">Где строить</span><span class="en">Where to build</span></p>
   <h2 class="rv"><span class="ru">Восемь рекомендованных территорий</span><span class="en">Eight recommended territories</span></h2>
   <p class="lead rv"><span class="ru">Отбор по научным данным: устойчивость к коллапсу, модель ядерной зимы, индекс миролюбия, право иностранцев на землю. Нажмите на точку на карте.</span><span class="en">Selected using research: resilience to collapse, the nuclear-winter model, the Global Peace Index and foreign land rights. Tap a pin on the map.</span></p>
-  <div class="mapbox rv"><div class="map" id="map"><img src="img/worldmap.png" alt=""></div>
+  <div class="mapbox rv"><div class="map" id="map" dir="ltr"><img src="img/worldmap.png" alt=""></div>
    <div class="locs" id="locs"></div>
    <div class="prof" id="prof"></div>
   </div>
@@ -193,20 +193,20 @@ th{color:var(--brl);font-weight:500;font-size:13px}
 let sel = 7;
 function renderOpts(){
  const G=[...OPTG.map(g=>({t:g,i:g.o.map(o=>[o.ru,o.en])}))];
- $("optlist").innerHTML=OPTG.map((g,k)=>`<details class="opt" ${k==0?"open":""}><summary>${g[L]}</summary><ul>${g.o.map(o=>`<li>${o[L]}</li>`).join("")}</ul></details>`).join("");
+ $("optlist").innerHTML=OPTG.map((g,k)=>`<details class="opt" ${k==0?"open":""}><summary>${tobj(g)}</summary><ul>${g.o.map(o=>`<li>${tobj(o)}</li>`).join("")}</ul></details>`).join("");
 }
 function renderLocs(){
- const lx=L=="ru"?0:1, map=$("map");
+ const map=$("map");
  map.querySelectorAll(".pin").forEach(p=>p.remove());
- LOCS.forEach((l,i)=>{const b=document.createElement("button");b.className="pin"+(i==sel?" on":"");b.textContent=i+1;b.title=l[L];b.setAttribute("aria-label",l[L]);
+ LOCS.forEach((l,i)=>{const b=document.createElement("button");b.className="pin"+(i==sel?" on":"");b.textContent=i+1;b.title=tobj(l);b.setAttribute("aria-label",tobj(l));
   b.style.left=((l.c[0]+180)/360*100)+"%";b.style.top=((78-l.c[1])/134*100)+"%";b.onclick=()=>{sel=i;renderLocs()};map.appendChild(b)});
- $("locs").innerHTML=LOCS.map((l,i)=>`<div class="loc ${i==sel?"on":""}" data-i="${i}"><b>${i+1}. ${l[L]}</b><div class="sc">${l.s.reduce((a,b)=>a+b)}/50</div></div>`).join("");
+ $("locs").innerHTML=LOCS.map((l,i)=>`<div class="loc ${i==sel?"on":""}" data-i="${i}"><b>${i+1}. ${tobj(l)}</b><div class="sc">${l.s.reduce((a,b)=>a+b)}/50</div></div>`).join("");
  $("locs").querySelectorAll(".loc").forEach(d=>d.onclick=()=>{sel=+d.dataset.i;renderLocs()});
- const l=LOCS[sel], names=L=="ru"?["Безопасность и изоляция","Климат и риски","Еда и вода","Доступ для иностранцев","Комфорт"]:["Safety and isolation","Climate and hazards","Food and water","Foreign access","Comfort"];
- $("prof").innerHTML=`<div class="card"><h3>${l[L]}</h3><p class="v">${l.v[lx]}</p><p class="lab" style="color:var(--br)">${L=="ru"?"Почему подходит":"Why it fits"}</p><ul>${l.p.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul></div>
- <div class="card"><p class="lab" style="color:var(--em);margin-top:0">${L=="ru"?"Риски":"Risks"}</p><ul>${l.r.map(x=>`<li>${esc(x[lx])}</li>`).join("")}</ul><div style="margin-top:16px">${names.map((n,k)=>`<div class="bar"><div class="t"><span>${n}</span><span>${l.s[k]}/10</span></div><div class="tr"><div class="fl" style="width:${l.s[k]*10}%"></div></div></div>`).join("")}</div></div>`;
- const cols=[L=="ru"?"Локация":"Location",...names,L=="ru"?"Итого":"Total"];
- $("matrix").innerHTML=`<tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr>`+LOCS.map(l=>`<tr><td><b>${l[L]}</b></td>${l.s.map(v=>`<td>${v}</td>`).join("")}<td><b>${l.s.reduce((a,b)=>a+b)}</b>/50</td></tr>`).join("");
+ const l=LOCS[sel], names=[tx("Безопасность и изоляция","Safety and isolation"),tx("Климат и риски","Climate and hazards"),tx("Еда и вода","Food and water"),tx("Доступ для иностранцев","Foreign access"),tx("Комфорт","Comfort")];
+ $("prof").innerHTML=`<div class="card"><h3>${tobj(l)}</h3><p class="v">${tx(l.v[0],l.v[1])}</p><p class="lab" style="color:var(--br)">${tx("Почему подходит","Why it fits")}</p><ul>${l.p.map(x=>`<li>${esc(tx(x[0],x[1]))}</li>`).join("")}</ul></div>
+ <div class="card"><p class="lab" style="color:var(--em);margin-top:0">${tx("Риски","Risks")}</p><ul>${l.r.map(x=>`<li>${esc(tx(x[0],x[1]))}</li>`).join("")}</ul><div style="margin-top:16px">${names.map((n,k)=>`<div class="bar"><div class="t"><span>${n}</span><span>${l.s[k]}/10</span></div><div class="tr"><div class="fl" style="width:${l.s[k]*10}%"></div></div></div>`).join("")}</div></div>`;
+ const cols=[tx("Локация","Location"),...names,tx("Итого","Total")];
+ $("matrix").innerHTML=`<tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr>`+LOCS.map(l=>`<tr><td><b>${tobj(l)}</b></td>${l.s.map(v=>`<td>${v}</td>`).join("")}<td><b>${l.s.reduce((a,b)=>a+b)}</b>/50</td></tr>`).join("");
 }
 langHooks.push(renderOpts,renderLocs);
 </script>

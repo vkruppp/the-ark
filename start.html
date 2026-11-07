@@ -91,10 +91,10 @@ input[type=range]{flex:1;accent-color:var(--br)}
 </style>
 </head>
 <body class="lru">
-<nav id="nav" class="solid"><div class="wrap in">
+<nav id="nav" data-solid="1"><div class="wrap in">
  <a class="logo" href="index.html">THE ARK</a>
  <div class="links"><a href="philosophy.html"><span class="ru">Философия</span><span class="en">Philosophy</span></a><a href="ark.html"><span class="ru">Ковчег</span><span class="en">The Ark</span></a><a href="start.html" class="on"><span class="ru">Ваш проект</span><span class="en">Your project</span></a></div>
- <div class="lang"><button data-l="ru">RU</button><button data-l="en">EN</button></div>
+ <select class="lang" id="langsel" aria-label="Language"></select>
 </div></nav>
 <div class="stage"><div class="wrap" id="app"></div></div>
 <footer class="footer"><div class="wrap"><span>THE ARK · <span class="ru">только по приглашению</span><span class="en">by invitation only</span></span><span><a href="index.html"><span class="ru">Главная</span><span class="en">Home</span></a> · <a href="philosophy.html"><span class="ru">Философия</span><span class="en">Philosophy</span></a> · <a href="ark.html"><span class="ru">Ковчег</span><span class="en">The Ark</span></a></span></div></footer>
@@ -116,6 +116,7 @@ const S=[
  {ru:"Жизнь",en:"Life",hr:"Чем наполнены дни",he:"What fills the days",q:[["life","m","Что должно быть в поселении?","What should the settlement have?",["Школа","Библиотека","Спортзал","Бассейн","Спа","Винный погреб","Обсерватория","Мастерские","Конюшня","Теннисный корт","Место для медитации","Общий павильон для ужинов"],["School","Library","Gym","Swimming pool","Spa","Wine cellar","Observatory","Workshops","Stables","Tennis court","Meditation space","Shared dining pavilion"]],["screens","s","Экраны и интернет в домах","Screens and internet in the homes",["Полностью без экранов","Только офлайн-медиатека","Как обычно"],["No screens at all","Offline media library only","As usual"]]]},
  {ru:"Сроки и бюджет",en:"Timing and budget",hr:"Когда и в каком масштабе",he:"When and at what scale",q:[["start","s","Когда начать?","When to start?",["Немедленно","В течение 6 месяцев","В течение года","Пока изучаем"],["Immediately","Within 6 months","Within a year","Still exploring"]],["ready","s","Желаемый срок готовности","Desired completion",["До 2 лет","2–3 года","3–5 лет","Не критично"],["Within 2 years","2–3 years","3–5 years","Not critical"]],["budget","s","Бюджет без земли","Budget excluding land",["$15–30 млн","$30–50 млн","$50–100 млн","Более $100 млн","Обсудим"],["$15–30m","$30–50m","$50–100m","Over $100m","Let’s discuss"]],["funding","s","Финансирование","Funding",["Собственные средства","С партнёрами","Через семейный офис или фонд"],["Own funds","With partners","Via a family office or fund"]]]},
  {ru:"Связь с вами",en:"Contact",hr:"Конфиденциально",he:"Confidentially",q:[["via","s","Через кого вести общение?","Who should we work with?",["Лично со мной","Семейный офис","Юрист","Помощник"],["With me personally","Family office","Lawyer","Assistant"]],["nda","s","NDA до начала работы","NDA before starting",["Обязательно","По желанию"],["Mandatory","Optional"]],["meet","s","Формат первой встречи","First meeting format",["Личная встреча","Видеозвонок","Через доверенное лицо"],["In person","Video call","Through a trusted representative"]],["name","t","Имя или кодовое имя","Name or code name"],["contact","t","Контакт для связи: e-mail, телефон или мессенджер","Contact: email, phone or messenger"],["comment","a","Что ещё нам важно знать?","Anything else we should know?"]]}];
+function TT(){return L=="ru"?T.ru:L=="en"?T.en:deepTx(T.en)}
 const T={ru:{step:"Шаг",of:"из",answered:"отвечено",next:"Далее",back:"Назад",result:"Получить расчёт",other:"Свой вариант…",multi:"Можно выбрать несколько",summary:"Расчёт",
  introE:"03 · Ваш проект",introH:"Ваш ковчег<br>за 5 минут",introP:"Ответьте на вопросы о семье, месте и составе поселения. В конце вы сразу увидите предварительную стоимость, а точную смету мы подготовим после личной встречи.",
  b1:"12 коротких шагов",b2:"Готовые варианты ответов",b3:"Расчёт стоимости сразу",b4:"Ответы хранятся только в вашем браузере",go:"Начать",cont:"Продолжить",restart:"Начать заново",
@@ -165,16 +166,16 @@ function fromAnswers(){
  return {loc,ter,ha:one("area",[8,20,60,150,30],30),villas,area:one("mainhouse",[250,450,800,1000],300),people,staff:one("staffn",[8,20,45,80,staffAuto],staffAuto),years:one("years",[1,3,5,10],5),fin:one("finish",["p","u"],"p"),core:one("core",["none","block","rock"],"block"),on};
 }
 function go(i){cur=i;save();render();scrollTo({top:0,behavior:"smooth"})}
-function render(){const t=T[L];
+function render(){const t=TT();
  if(cur<0)return intro(t);
  if(cur>=S.length)return result(t);
  const n=allQ.filter(isAns).length,s=S[cur];
- let h=`<div class="prog"><div class="t"><span>${t.step} ${cur+1} ${t.of} ${S.length}</span><span>${n} / ${allQ.length} ${t.answered}</span></div><div class="tr"><div class="fl" style="width:${(cur)/S.length*100}%"></div></div><div class="steps">${S.map((x,i)=>`<button data-i="${i}" class="${i==cur?"on":""} ${x.q.every(isAns)?"done":""}">${i+1}. ${x[L]}</button>`).join("")}<button data-i="${S.length}">${t.summary}</button></div></div>`;
- h+=`<div class="fade"><div class="sech"><span class="n">${String(cur+1).padStart(2,"0")}</span><div><h2>${s[L]}</h2><p>${L=="ru"?s.hr:s.he}</p></div></div>`;
- s.q.forEach(q=>{const [id,ty,ru,en,oR,oE]=q,v=A[id]||{};h+=`<div class="q"><p class="ql">${L=="ru"?ru:en}</p>`;
-  if(ty=="s"||ty=="m"){h+=ty=="m"?`<p class="qh">${t.multi}</p>`:`<div style="height:10px"></div>`;h+=`<div class="ch">`+(L=="ru"?oR:oE).map((o,i)=>`<button data-q="${id}" data-i="${i}" class="${(v.c||[]).includes(i)?"on":""}">${o}</button>`).join("")+`</div><input type="text" class="oth" data-o="${id}" placeholder="${t.other}" value="${esc(v.o||"")}">`}
+ let h=`<div class="prog"><div class="t"><span>${t.step} ${cur+1} ${t.of} ${S.length}</span><span>${n} / ${allQ.length} ${t.answered}</span></div><div class="tr"><div class="fl" style="width:${(cur)/S.length*100}%"></div></div><div class="steps">${S.map((x,i)=>`<button data-i="${i}" class="${i==cur?"on":""} ${x.q.every(isAns)?"done":""}">${i+1}. ${tobj(x)}</button>`).join("")}<button data-i="${S.length}">${t.summary}</button></div></div>`;
+ h+=`<div class="fade"><div class="sech"><span class="n">${String(cur+1).padStart(2,"0")}</span><div><h2>${tobj(s)}</h2><p>${tx(s.hr,s.he)}</p></div></div>`;
+ s.q.forEach(q=>{const [id,ty,ru,en,oR,oE]=q,v=A[id]||{};h+=`<div class="q"><p class="ql">${tx(ru,en)}</p>`;
+  if(ty=="s"||ty=="m"){h+=ty=="m"?`<p class="qh">${t.multi}</p>`:`<div style="height:10px"></div>`;h+=`<div class="ch">`+tarr(oR,oE).map((o,i)=>`<button data-q="${id}" data-i="${i}" class="${(v.c||[]).includes(i)?"on":""}">${o}</button>`).join("")+`</div><input type="text" class="oth" data-o="${id}" placeholder="${t.other}" value="${esc(v.o||"")}">`}
   else if(ty=="t")h+=`<input type="text" data-x="${id}" value="${esc(v.t||"")}" style="margin-top:8px">`;else h+=`<textarea data-x="${id}" style="margin-top:8px">${esc(v.t||"")}</textarea>`;h+=`</div>`});
- h+=`<div class="navb"><button class="btn ghost" id="bk">← ${cur==0?(L=="ru"?"К началу":"Back to start"):t.back}</button><button class="btn" id="nx">${cur==S.length-1?t.result:t.next} →</button></div></div>`;
+ h+=`<div class="navb"><button class="btn ghost" id="bk">← ${cur==0?(tx("К началу","Back to start")):t.back}</button><button class="btn" id="nx">${cur==S.length-1?t.result:t.next} →</button></div></div>`;
  $("app").innerHTML=h;
  $("app").querySelectorAll(".steps button").forEach(b=>b.onclick=()=>go(+b.dataset.i));
  $("app").querySelectorAll(".ch button").forEach(b=>b.onclick=()=>{const id=b.dataset.q,i=+b.dataset.i,q=allQ.find(x=>x[0]==id);A[id]=A[id]||{};A[id].c=A[id].c||[];
@@ -184,7 +185,7 @@ function render(){const t=T[L];
  $("app").querySelectorAll("[data-x]").forEach(e=>e.oninput=()=>{A[e.dataset.x]={t:e.value};save();upd()});
  $("bk").onclick=()=>go(cur-1);$("nx").onclick=()=>go(cur+1);
 }
-function upd(){const t=T[L],n=allQ.filter(isAns).length;const sp=$("app").querySelector(".prog .t span:last-child");if(sp)sp.textContent=`${n} / ${allQ.length} ${t.answered}`;
+function upd(){const t=TT(),n=allQ.filter(isAns).length;const sp=$("app").querySelector(".prog .t span:last-child");if(sp)sp.textContent=`${n} / ${allQ.length} ${t.answered}`;
  $("app").querySelectorAll(".steps button").forEach((b,i)=>{if(i<S.length)b.classList.toggle("done",S[i].q.every(isAns))})}
 function intro(t){const n=allQ.filter(isAns).length;
  $("app").innerHTML=`<div class="intro fade"><div><p class="eb">${t.introE}</p><h1>${t.introH}</h1><p class="lead" style="margin-top:20px">${t.introP}</p>
@@ -193,7 +194,7 @@ function intro(t){const n=allQ.filter(isAns).length;
  $("go").onclick=()=>go(n?Math.max(0,S.findIndex(s=>!s.q.every(isAns))):0);
  if($("rs"))$("rs").onclick=()=>{A={};st=null;adjusted=false;go(0)};
 }
-function ansText(q){const [id,ty,,,oR,oE]=q,v=A[id];if(!isAns(q))return null;if(ty=="t"||ty=="a")return v.t;const op=L=="ru"?oR:oE;return [...(v.c||[]).map(i=>op[i]),v.o].filter(Boolean).join(", ")}
+function ansText(q){const [id,ty,,,oR,oE]=q,v=A[id];if(!isAns(q))return null;if(ty=="t"||ty=="a")return v.t;const op=tarr(oR,oE);return [...(v.c||[]).map(i=>op[i]),v.o].filter(Boolean).join(", ")}
 function result(t){
  if(!adjusted||!st)st=fromAnswers();
  $("app").innerHTML=`<div class="fade"><p class="eb">${t.resE}</p><h2>${t.resH}</h2>
@@ -202,9 +203,9 @@ function result(t){
   <div class="card"><p class="eb" id="r_where"></p><div id="r_bars"></div><div id="r_conf" style="margin-top:20px;font-size:14px;color:var(--mu)"></div></div></div>
  <details class="adj"><summary>${t.adj}</summary><div class="adjin" id="adj"></div></details>
  <div class="send"><h3 class="serif" style="font-size:34px;font-weight:500">${t.sendH}</h3><p class="mu">${t.sendP}</p>
-  ${FORM_EMAIL?`<div class="row" style="margin-top:18px"><div><label class="f">${L=="ru"?"Имя или кодовое имя":"Name or code name"}</label><input type="text" id="s_name" value="${esc((A.name&&A.name.t)||"")}"></div><div><label class="f">${L=="ru"?"Контакт":"Contact"}</label><input type="text" id="s_contact" value="${esc((A.contact&&A.contact.t)||"")}"></div></div>`:""}
+  ${FORM_EMAIL?`<div class="row" style="margin-top:18px"><div><label class="f">${tx("Имя или кодовое имя","Name or code name")}</label><input type="text" id="s_name" value="${esc((A.name&&A.name.t)||"")}"></div><div><label class="f">${tx("Контакт","Contact")}</label><input type="text" id="s_contact" value="${esc((A.contact&&A.contact.t)||"")}"></div></div>`:""}
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px">${FORM_EMAIL?`<button class="btn" id="s_send">${t.send}</button>`:""}<button class="btn ${FORM_EMAIL?"ghost":""}" id="s_copy">${t.copy}</button><button class="btn ghost" id="s_dl">${t.dl}</button></div><p class="msg" id="s_msg"></p></div>
- <details class="adj"><summary>${t.answers}</summary><div class="adjin ans">${S.map((s,i)=>`<p class="gh">${s[L]} <button class="btn ghost" data-e="${i}" style="padding:4px 12px;font-size:12px;margin-left:8px">${t.edit}</button></p>`+s.q.map(q=>`<div><p class="k">${L=="ru"?q[2]:q[3]}</p><p>${ansText(q)?esc(ansText(q)):`<span class="mu">${t.empty}</span>`}</p></div>`).join("")).join("")}</div></details>
+ <details class="adj"><summary>${t.answers}</summary><div class="adjin ans">${S.map((s,i)=>`<p class="gh">${tobj(s)} <button class="btn ghost" data-e="${i}" style="padding:4px 12px;font-size:12px;margin-left:8px">${t.edit}</button></p>`+s.q.map(q=>`<div><p class="k">${tx(q[2],q[3])}</p><p>${ansText(q)?esc(ansText(q)):`<span class="mu">${t.empty}</span>`}</p></div>`).join("")).join("")}</div></details>
  <div class="navb"><button class="btn ghost" id="bk">← ${t.back}</button><button class="btn ghost" id="rs">${t.restart}</button></div></div>`;
  buildAdj(t);calc(t);
  $("bk").onclick=()=>go(S.length-1);$("rs").onclick=()=>{A={};st=null;adjusted=false;go(-1)};
@@ -218,11 +219,11 @@ function result(t){
 }
 function buildAdj(t){const loc=LOCS.find(l=>l.k==st.loc),coastOK=loc.coast&&st.ter=="coast",K=loc.m*(TER.find(x=>x.k==st.ter)||TER[0]).m;
  const rng=(k,lab,min,max,step,suf)=>`<div><label class="f">${lab}</label><div class="rng"><input type="range" data-r="${k}" min="${min}" max="${max}" step="${step}" value="${st[k]}"><output id="o_${k}">${st[k]}${suf||""}</output></div></div>`;
- let h=`<div class="row"><div><label class="f">${t.country}</label><select id="a_loc">${LOCS.map(l=>`<option value="${l.k}" ${l.k==st.loc?"selected":""}>${l[L]}</option>`).join("")}</select></div><div><label class="f">${t.ha}</label><input type="number" id="a_ha" min="2" max="1000" value="${st.ha}"></div></div>
- <label class="f">${t.terrain}</label><div class="seg" style="margin-bottom:16px">${TER.map(x=>`<button data-ter="${x.k}" class="${st.ter==x.k?"on":""}" ${!loc.coast&&x.k=="coast"?"disabled":""}>${x[L]}</button>`).join("")}</div>
- <div class="row">${rng("villas",t.villas,1,20,1)}${rng("area",t.area,150,1200,25," m²")}${rng("people",t.people,2,80,1)}${rng("staff",t.staffL,5,150,1)}${rng("years",t.years,1,15,1)}<div><label class="f">${t.finish}</label><div class="seg">${FIN.map(x=>`<button data-fin="${x.k}" class="${st.fin==x.k?"on":""}">${x[L]}</button>`).join("")}</div></div></div>
- <label class="f">Ark Core</label><div class="seg" style="margin-bottom:18px">${CORE.map(x=>`<button data-core="${x.k}" class="${st.core==x.k?"on":""}">${x[L]}</button>`).join("")}</div>`;
- OPTG.forEach(g=>{h+=`<p class="gh">${g[L]}</p><div class="opts">`+g.o.map(o=>{const dis=o.coast&&!coastOK;if(dis)st.on[o.k]=false;return `<label class="opt ${dis?"dis":""}"><input type="checkbox" data-k="${o.k}" ${st.on[o.k]?"checked":""} ${dis?"disabled":""}><span>${o[L]}</span><span class="c">${money(o.c*1e6*K)}</span></label>`}).join("")+`</div>`});
+ let h=`<div class="row"><div><label class="f">${t.country}</label><select id="a_loc">${LOCS.map(l=>`<option value="${l.k}" ${l.k==st.loc?"selected":""}>${tobj(l)}</option>`).join("")}</select></div><div><label class="f">${t.ha}</label><input type="number" id="a_ha" min="2" max="1000" value="${st.ha}"></div></div>
+ <label class="f">${t.terrain}</label><div class="seg" style="margin-bottom:16px">${TER.map(x=>`<button data-ter="${x.k}" class="${st.ter==x.k?"on":""}" ${!loc.coast&&x.k=="coast"?"disabled":""}>${tobj(x)}</button>`).join("")}</div>
+ <div class="row">${rng("villas",t.villas,1,20,1)}${rng("area",t.area,150,1200,25," m²")}${rng("people",t.people,2,80,1)}${rng("staff",t.staffL,5,150,1)}${rng("years",t.years,1,15,1)}<div><label class="f">${t.finish}</label><div class="seg">${FIN.map(x=>`<button data-fin="${x.k}" class="${st.fin==x.k?"on":""}">${tobj(x)}</button>`).join("")}</div></div></div>
+ <label class="f">Ark Core</label><div class="seg" style="margin-bottom:18px">${CORE.map(x=>`<button data-core="${x.k}" class="${st.core==x.k?"on":""}">${tobj(x)}</button>`).join("")}</div>`;
+ OPTG.forEach(g=>{h+=`<p class="gh">${tobj(g)}</p><div class="opts">`+g.o.map(o=>{const dis=o.coast&&!coastOK;if(dis)st.on[o.k]=false;return `<label class="opt ${dis?"dis":""}"><input type="checkbox" data-k="${o.k}" ${st.on[o.k]?"checked":""} ${dis?"disabled":""}><span>${tobj(o)}</span><span class="c">${money(o.c*1e6*K)}</span></label>`}).join("")+`</div>`});
  $("adj").innerHTML=h;
  const ch=()=>{adjusted=true;save();calc(t)};
  $("a_loc").onchange=e=>{st.loc=e.target.value;const l=LOCS.find(x=>x.k==st.loc);if(!l.coast&&st.ter=="coast")st.ter="jungle";buildAdj(t);ch()};
@@ -241,16 +242,16 @@ function calc(t){const e=estimate(st);
  $("r_cost").textContent=money(e.cost);$("r_fee").textContent=money(e.fee);$("r_land").textContent=money(e.land[0])+" – "+money(e.land[1]);$("r_all").textContent=money(e.total+e.land[0])+" – "+money(e.total+e.land[1]);$("r_opex").textContent=money(e.opex);
  const parts=[["villas",e.villas],["staff",e.staffH],["base",e.base],["core",e.core],["opts",e.opts],["soft",e.soft],["cont",e.cont]].filter(p=>p[1]>0),mx=Math.max(...parts.map(p=>p[1]));
  $("r_bars").innerHTML=parts.map(p=>`<div class="bar"><div class="t"><span>${t.cats[p[0]]}</span><span>${money(p[1])}</span></div><div class="tr"><div class="fl" style="width:${p[1]/mx*100}%"></div></div></div>`).join("");
- const ter=TER.find(x=>x.k==st.ter);$("r_where").textContent=`${e.loc[L]} · ${ter[L]}`;
- const opts=[];OPTG.forEach(g=>g.o.forEach(o=>{if(st.on[o.k])opts.push(o[L])}));
- $("r_conf").innerHTML=`${st.villas} × ${st.area} m² · ${t.people}: ${st.people} · ${t.staffL}: ${st.staff} · ${t.years}: ${st.years}<br>Ark Core: ${CORE.find(c=>c.k==st.core)[L]}${opts.length?`<br><br>${opts.join(" · ")}`:""}`;
+ const ter=TER.find(x=>x.k==st.ter);$("r_where").textContent=`${tobj(e.loc)} · ${tobj(ter)}`;
+ const opts=[];OPTG.forEach(g=>g.o.forEach(o=>{if(st.on[o.k])opts.push(tobj(o))}));
+ $("r_conf").innerHTML=`${st.villas} × ${st.area} m² · ${t.people}: ${st.people} · ${t.staffL}: ${st.staff} · ${t.years}: ${st.years}<br>Ark Core: ${tobj(CORE.find(c=>c.k==st.core))}${opts.length?`<br><br>${opts.join(" · ")}`:""}`;
  let f="";if(e.total<15e6)f+=`<div class="flag warn">${t.low}</div>`;
  const bud=one("budget",[[15e6,30e6],[30e6,50e6],[50e6,100e6],[100e6,1e12],null],null);
  if(bud){f+=e.total>bud[1]?`<div class="flag warn">${t.bOver}</div>`:`<div class="flag ok">${t.bOk}</div>`}
  $("r_flags").innerHTML=f;
 }
-function plain(t){const e=estimate(st);let o=`${t.title}\n\n${t.total}: ${money(e.total)} (${t.range}: ${money(e.total*.85)} – ${money(e.total*1.2)})\n${t.cost}: ${money(e.cost)}\n${t.fee}: ${money(e.fee)}\n${t.land}: ${money(e.land[0])} – ${money(e.land[1])}\n${t.opex}: ${money(e.opex)}\n${e.loc[L]}, ${st.villas} × ${st.area} m², ${t.people}: ${st.people}, ${t.staffL}: ${st.staff}\n\n`;
- S.forEach(s=>{o+=s[L].toUpperCase()+"\n";s.q.forEach(q=>o+=`${L=="ru"?q[2]:q[3]}: ${ansText(q)||t.empty}\n`);o+="\n"});return o}
+function plain(t){const e=estimate(st);let o=`${t.title}\n\n${t.total}: ${money(e.total)} (${t.range}: ${money(e.total*.85)} – ${money(e.total*1.2)})\n${t.cost}: ${money(e.cost)}\n${t.fee}: ${money(e.fee)}\n${t.land}: ${money(e.land[0])} – ${money(e.land[1])}\n${t.opex}: ${money(e.opex)}\n${tobj(e.loc)}, ${st.villas} × ${st.area} m², ${t.people}: ${st.people}, ${t.staffL}: ${st.staff}\n\n`;
+ S.forEach(s=>{o+=tobj(s).toUpperCase()+"\n";s.q.forEach(q=>o+=`${tx(q[2],q[3])}: ${ansText(q)||t.empty}\n`);o+="\n"});return o}
 langHooks.push(()=>{lastTot=0;render()});
 </script>
 </body>

@@ -35,7 +35,7 @@ window.OPTG = [
  {ru:"Медицина",en:"Medicine",o:[{k:"clinic",ru:"Клиника с операционной",en:"Clinic with operating room",c:1.8},{k:"medplus",ru:"Лаборатория, рентген, стоматология, роды",en:"Lab, X-ray, dental, maternity",c:1.1}]},
  {ru:"Хозяйство",en:"Farming",o:[{k:"terr",ru:"Террасы, сады, завоз грунта",en:"Terraces, orchards, imported soil",c:1.1},{k:"live",ru:"Животноводство, аквакультура, пасека",en:"Livestock, aquaculture, bees",c:0.4},{k:"craft",ru:"Пекарня, сыроварня, мастерские",en:"Bakery, dairy, workshops",c:0.6}]},
  {ru:"Жизнь",en:"Life",o:[{k:"school",ru:"Школа",en:"School",c:0.6},{k:"spa",ru:"Спортзал, бассейн, спа",en:"Gym, pool, spa",c:1.1},{k:"leisure",ru:"Конюшня, корт, место для медитации",en:"Stables, court, meditation space",c:0.6},{k:"cellar",ru:"Винный погреб",en:"Wine cellar",c:0.3},{k:"obs",ru:"Обсерватория",en:"Observatory",c:0.45}]}];
-window.money = v => { const x = v/1e6, s = x >= 100 ? x.toFixed(0) : x.toFixed(1); return L === "ru" ? "$" + s.replace(".", ",") + " млн" : "$" + s + "m"; };
+window.money = v => { const x = v/1e6, s = nfmt(x, x >= 100 ? 0 : 1); const suf = {ru:" млн",uk:" млн",de:" Mio.",fr:" M",es:" M",zh:" 百万",ar:" مليون",he:" מיליון"}[L]; return "$" + s + (suf === undefined ? "m" : suf); };
 window.estimate = function (st) {
   const loc = LOCS.find(l => l.k === st.loc) || LOCS[6], ter = TER.find(x => x.k === st.ter) || TER[0], fin = FIN.find(x => x.k === st.fin) || FIN[0];
   const K = loc.m * ter.m, n = st.villas, ha = Math.max(1, st.ha);
