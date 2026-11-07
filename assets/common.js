@@ -19,7 +19,7 @@ window.langHooks = [];
 function loadDict(l) {
   return new Promise(res => {
     if (l === "ru" || l === "en" || I18N[l]) return res();
-    const s = document.createElement("script"); s.src = "assets/i18n/" + l + ".js"; s.onload = res; s.onerror = res; document.head.appendChild(s);
+    const s = document.createElement("script"); s.src = "assets/i18n/" + l + ".js?v=9"; s.onload = res; s.onerror = res; document.head.appendChild(s);
   });
 }
 window.setLang = async function (l) {
